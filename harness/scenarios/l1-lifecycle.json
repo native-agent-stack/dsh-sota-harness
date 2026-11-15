@@ -2,6 +2,6 @@
   "id": "l1-lifecycle",
   "layer": "L1",
   "title": "Reversible lifecycle guard",
-  "anchor": "FenrirCait/dsh-fail-guard",
+  "anchor": "PerryLink/dsh-memento",
   "fixture": "harness/fixtures/l1-lifecycle"
 }

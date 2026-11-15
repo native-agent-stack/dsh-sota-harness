@@ -5,7 +5,7 @@
     {
       "id": "l1-lifecycle",
       "layer": "L1",
-      "anchor": "FenrirCait/dsh-fail-guard",
+      "anchor": "PerryLink/dsh-memento",
       "evidence": "E1",
       "reason": "Pinned SOTA anchor for this layer probe."
     },

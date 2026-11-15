@@ -4,7 +4,7 @@
   "requireConsent": true,
   "allowlist": [
     "0QwQ0/dsh-ui-auth",
-    "FenrirCait/dsh-fail-guard",
+    "PerryLink/dsh-memento",
     "light-cheng/dsh-strata",
     "project-hy/dsh-claude-delegate",
     "xuzhecomeon/dsh-research-suite"

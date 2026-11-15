@@ -12,6 +12,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const SKILL = path.join(ROOT, '.dsh', 'skills', 'dsh-plugin-sota')
 const SCENARIOS = path.join(ROOT, 'harness', 'scenarios')
 const ALLOWLIST = path.join(ROOT, 'harness', 'policies', 'allowlist.json')
+const LAYER_ANCHORS = path.join(SKILL, 'data', 'layer-anchors.json')
 const failures = []
 
 function fail(message) { failures.push(message) }
@@ -39,6 +40,11 @@ for (const file of files) {
     fail(label + ': allowlist does not match scenario')
   }
 
+  const layerAnchors = JSON.parse(await fs.readFile(LAYER_ANCHORS, 'utf8')).anchors
+  const curated = layerAnchors.find((a) => a.layer === scenario.layer &&
+    (a.title === scenario.anchor || a.npm === scenario.anchor || a.display === scenario.anchor))
+  if (!curated) fail(label + ': not a curated ' + scenario.layer + ' anchor')
+
   const query = runNode([path.join(SKILL, 'scripts', 'query.mjs'), 'get', scenario.anchor])
   if (query.status !== 0) {
     fail(label + ': anchor did not resolve: ' + scenario.anchor)
@@ -46,6 +52,9 @@ for (const file of files) {
     const entry = JSON.parse(query.stdout)
     if (entry.title.toLowerCase() !== scenario.anchor.toLowerCase()) {
       fail(label + ': anchor title mismatch')
+    }
+    if (entry.layer !== scenario.layer && !(entry.layers || []).includes(scenario.layer)) {
+      fail(label + ': catalog entry does not include ' + scenario.layer)
     }
   }
 

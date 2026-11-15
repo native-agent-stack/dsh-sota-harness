@@ -20,6 +20,7 @@ Create a separate repository, dsh-sota-harness, with:
 - a vendored snapshot of the dsh-plugin-sota skill and its docs;
 - five probes for L1, L3, L4, L7, and L8;
 - one fixture per probe;
+- a curated layer-anchor check plus catalog-layer membership;
 - an allowlist with an E1 evidence requirement;
 - an offline probe runner and CI;
 - a sync script that rsyncs --delete and verifies with diff -r.

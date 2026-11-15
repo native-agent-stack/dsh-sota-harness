@@ -6,7 +6,8 @@ five layer probes, not a mount of all 11,111 catalog entries.
 ## What this proves
 
 - the vendored dsh-plugin-sota skill is discoverable and its session brief is READY;
-- the anchor for each probe resolves in the committed catalog;
+- the anchor is in the curated layer-anchor set and the catalog entry
+  mentions the declared layer;
 - each fixture satisfies its layer contract;
 - the catalog, anchor, doc, and HTML validators still pass;
 - no third-party plugin is installed in CI.
@@ -66,7 +67,7 @@ docs/adr/                       harness boundary decisions
 
 | Layer | Anchor | Fixture |
 |---|---|---|
-| L1 | FenrirCait/dsh-fail-guard | lifecycle fixture |
+| L1 | PerryLink/dsh-memento | lifecycle fixture |
 | L3 | project-hy/dsh-claude-delegate | typed tool schema |
 | L4 | xuzhecomeon/dsh-research-suite | skill contract |
 | L7 | light-cheng/dsh-strata | session event provenance |
