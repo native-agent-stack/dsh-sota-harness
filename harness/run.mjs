@@ -106,4 +106,4 @@ if (failures.length) {
   for (const failure of failures) console.error('FAIL ' + failure)
   process.exit(1)
 }
-console.log('Harness: ' + files.length + '/10 probes pass; no plugins installed')
+console.log('Harness: ' + files.length + '/10 baseline probes pass; no third-party plugins installed or executed')

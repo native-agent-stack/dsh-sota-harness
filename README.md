@@ -18,6 +18,16 @@ ten layer probes (L0–L9), not a mount of all 11,111 catalog entries.
 - that all 11,111 entries are installed;
 - that a fixture is a production plugin.
 
+## Baseline limitation
+
+The 10/10 result is an **empty-baseline** result. It validates the vendored skill,
+curated anchors, layer membership, fixture contracts, and validators. It does
+**not** detect, install, boot, or exercise a real third-party plugin.
+
+A real plugin probe needs a pinned spec, an E2 boot, an E3 behavior check, and a
+recorded rollback. Until such a probe exists, do not read 10/10 as full runtime
+verification.
+
 The catalog repo is the discovery and evidence source. This repo is the practice
 surface.
 
@@ -35,11 +45,14 @@ catalog, docs, renderer, and final HTML are ready.
 
 ~~~sh
 ./harness/scripts/sync-skill.sh
+# or, from any directory:
+DSH_CATALOG_REPO="$HOME/Documents/dsh" ./harness/scripts/sync-skill.sh
 ~~~
 
-The default source is ../dsh. The script rsyncs the skill and docs with
---delete, then runs diff -r. A READY brief alone does not prove the snapshot
-matches; the diff does.
+The source is DSH_CATALOG_REPO, the first argument, or ../dsh. The script
+canonicalizes the source, refuses a source equal to the harness, rsyncs the
+skill and docs with --delete, then runs diff -r. A READY brief alone does not
+prove the snapshot matches; the diff does.
 
 ## Mirrored docs
 

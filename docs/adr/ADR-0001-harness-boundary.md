@@ -35,6 +35,9 @@ the source of truth; the harness is the practice surface.
   proof of sync.
 - Ten probes do not prove the other 11,101 entries. They prove all ten layer
   contracts and the workflow surface.
+- The probes run with zero third-party plugins installed. They do not detect,
+  install, boot, or exercise real plugin code. A real runtime claim needs an E2/E3
+  fixture with a pinned spec and rollback.
 - A future version can replace the vendored copy with a submodule or a released
   package once the catalog repo has a remote.
 
