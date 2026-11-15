@@ -1,0 +1,7 @@
+{
+  "id": "l4-skill-routing",
+  "layer": "L4",
+  "title": "Skill with a discriminating trigger",
+  "anchor": "xuzhecomeon/dsh-research-suite",
+  "fixture": "harness/fixtures/l4-skill"
+}

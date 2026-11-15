@@ -1,0 +1,246 @@
+{
+  "schemaVersion": 1,
+  "note": "Exact catalog identities for the SOTA anchors by layer. display must equal the exact title or exact npm name; id must exist in catalog.jsonl.",
+  "anchors": [
+    {
+      "layer": "L0",
+      "id": "gh:perrylink/dsh-doublecheck",
+      "title": "PerryLink/dsh-doublecheck",
+      "npm": "dsh-doublecheck",
+      "display": "PerryLink/dsh-doublecheck",
+      "reason": "Explicit manifest, compatibility range, and capability declarations."
+    },
+    {
+      "layer": "L0",
+      "id": "gh:perrylink/dsh-memento",
+      "title": "PerryLink/dsh-memento",
+      "npm": "dsh-memento",
+      "display": "PerryLink/dsh-memento",
+      "reason": "Manifest version, capability declaration, and approval-gated install surface."
+    },
+    {
+      "layer": "L0",
+      "id": "gh:tangyixiao/dsh-version-manager",
+      "title": "tangyixiao/dsh-version-manager",
+      "npm": "dsh-version-manager",
+      "display": "tangyixiao/dsh-version-manager",
+      "reason": "Profile and skill snapshots with evidence-gated recovery."
+    },
+    {
+      "layer": "L1",
+      "id": "gh:fenrircait/dsh-fail-guard",
+      "title": "FenrirCait/dsh-fail-guard",
+      "npm": "dsh-fail-guard",
+      "display": "FenrirCait/dsh-fail-guard",
+      "reason": "Small event-driven guard with a bounded failure policy."
+    },
+    {
+      "layer": "L1",
+      "id": "gh:omdsh-dev/dsh-advisor",
+      "title": "omdsh-dev/dsh-advisor",
+      "npm": "dsh-advisor",
+      "display": "omdsh-dev/dsh-advisor",
+      "reason": "Host and client halves with a reviewer model and lifecycle."
+    },
+    {
+      "layer": "L1",
+      "id": "gh:perrylink/dsh-memento",
+      "title": "PerryLink/dsh-memento",
+      "npm": "dsh-memento",
+      "display": "PerryLink/dsh-memento",
+      "reason": "Typed service with a provider, tool, and frozen snapshot."
+    },
+    {
+      "layer": "L2",
+      "id": "gh:lyp88997/dsh-browser-service",
+      "title": "lyp88997/dsh-browser-service",
+      "npm": "dsh-browser-service",
+      "display": "lyp88997/dsh-browser-service",
+      "reason": "Browser provider behind the documented seam, with loopback auth."
+    },
+    {
+      "layer": "L2",
+      "id": "gh:arcaneorion/dsh-model-channel-manager",
+      "title": "ArcaneOrion/dsh-model-channel-manager",
+      "npm": "@arcaneorion/dsh-model-channel-manager",
+      "display": "ArcaneOrion/dsh-model-channel-manager",
+      "reason": "Routing and failover over model providers."
+    },
+    {
+      "layer": "L2",
+      "id": "gh:perrylink/dsh-memento",
+      "title": "PerryLink/dsh-memento",
+      "npm": "dsh-memento",
+      "display": "PerryLink/dsh-memento",
+      "reason": "Typed ctx.memory seam with a separate provider."
+    },
+    {
+      "layer": "L3",
+      "id": "gh:project-hy/dsh-claude-delegate",
+      "title": "project-hy/dsh-claude-delegate",
+      "npm": "dsh-claude-delegate",
+      "display": "project-hy/dsh-claude-delegate",
+      "reason": "Delegation tool with explicit per-call controls."
+    },
+    {
+      "layer": "L3",
+      "id": "gh:imzl-zl/dsh-toolbox-ui",
+      "title": "Imzl-zl/dsh-toolbox-ui",
+      "npm": "dsh-toolbox-ui",
+      "display": "Imzl-zl/dsh-toolbox-ui",
+      "reason": "Deferred MCP schemas via ToolSearch."
+    },
+    {
+      "layer": "L3",
+      "id": "gh:2026heshao/dsh-armory",
+      "title": "2026heshao/dsh-armory",
+      "npm": "dsh-armory",
+      "display": "2026heshao/dsh-armory",
+      "reason": "Capability management with schemas, scopes, and connection state."
+    },
+    {
+      "layer": "L4",
+      "id": "gh:xuzhecomeon/dsh-research-suite",
+      "title": "xuzhecomeon/dsh-research-suite",
+      "npm": "dsh-research-suite",
+      "display": "xuzhecomeon/dsh-research-suite",
+      "reason": "Skills plus tools with a curated capability ledger."
+    },
+    {
+      "layer": "L4",
+      "id": "gh:polinnizhong/dsh-skill-intelligence",
+      "title": "PolinniZhong/dsh-skill-intelligence",
+      "npm": "dsh-skill-trace",
+      "display": "PolinniZhong/dsh-skill-intelligence",
+      "reason": "Read-only inspector of observed skill loads."
+    },
+    {
+      "layer": "L4",
+      "id": "gh:littleblacktong/dsh-plugin-superpowers",
+      "title": "LittleBlackTong/dsh-plugin-superpowers",
+      "npm": "dsh-plugin-superpowers",
+      "display": "LittleBlackTong/dsh-plugin-superpowers",
+      "reason": "Coherent method pack of native skills."
+    },
+    {
+      "layer": "L5",
+      "id": "gh:john-walks-slow/dsh-proactive/tree/main/packages/dsh-proactive",
+      "title": "dsh-proactive",
+      "npm": "dsh-proactive",
+      "display": "dsh-proactive",
+      "reason": "Durable host alarms with quiet hours and budgets."
+    },
+    {
+      "layer": "L5",
+      "id": "gh:mrzturn/dsh-switchman",
+      "title": "mrzturn/dsh-switchman",
+      "npm": "dsh-switchman",
+      "display": "mrzturn/dsh-switchman",
+      "reason": "Dispatch, optional Agent Teams, and tiered verification."
+    },
+    {
+      "layer": "L5",
+      "id": "gh:eccvik/lmtagent",
+      "title": "ECCVIK/lmtagent",
+      "npm": null,
+      "display": "ECCVIK/lmtagent",
+      "reason": "Role presets and wave-based DAG scheduling."
+    },
+    {
+      "layer": "L6",
+      "id": "gh:orderg-x/dsh-design-studio",
+      "title": "OrderG-X/dsh-design-studio",
+      "npm": "dsh-design-studio",
+      "display": "OrderG-X/dsh-design-studio",
+      "reason": "Canvas workbench extending the sidebar surface."
+    },
+    {
+      "layer": "L6",
+      "id": "gh:baitouwuya/dsh-super-cards",
+      "title": "baitouwuya/dsh-super-cards",
+      "npm": "dsh-super-cards",
+      "display": "baitouwuya/dsh-super-cards",
+      "reason": "Model-callable native cards with auto-layout."
+    },
+    {
+      "layer": "L6",
+      "id": "gh:cherrchen/dsh-theme-studio",
+      "title": "cherrchen/dsh-theme-studio",
+      "npm": "@dsh-electron/dsh-theme-studio",
+      "display": "cherrchen/dsh-theme-studio",
+      "reason": "Token-level theme editing with preview and persistence."
+    },
+    {
+      "layer": "L7",
+      "id": "gh:light-cheng/dsh-strata",
+      "title": "light-cheng/dsh-strata",
+      "npm": "@lightcheng/dsh-strata",
+      "display": "light-cheng/dsh-strata",
+      "reason": "Layered context with deterministic cards and archive."
+    },
+    {
+      "layer": "L7",
+      "id": "gh:yeqingtang/dsh-session-flow",
+      "title": "YeqingTang/dsh-session-flow",
+      "npm": "dsh-session-flow",
+      "display": "YeqingTang/dsh-session-flow",
+      "reason": "Cross-session archive, lineage, and search."
+    },
+    {
+      "layer": "L7",
+      "id": "gh:xiaoyuyu6420/dsh-backup",
+      "title": "xiaoyuyu6420/dsh-backup",
+      "npm": "@xiaoyuyu6420/dsh-backup",
+      "display": "xiaoyuyu6420/dsh-backup",
+      "reason": "Backup, restore, retention, and auto-rollback."
+    },
+    {
+      "layer": "L8",
+      "id": "gh:0qwq0/dsh-ui-auth",
+      "title": "0QwQ0/dsh-ui-auth",
+      "npm": "dsh-ui-auth",
+      "display": "0QwQ0/dsh-ui-auth",
+      "reason": "Auth for pages, API, plugin bundles, and WebSocket upgrades."
+    },
+    {
+      "layer": "L8",
+      "id": "gh:asktheway/dsh-jev-interceptor",
+      "title": "AskTheWay/dsh-jev-interceptor",
+      "npm": "dsh-jev-interceptor",
+      "display": "AskTheWay/dsh-jev-interceptor",
+      "reason": "Pre-execute policy with deny, escalate, and auto-approve."
+    },
+    {
+      "layer": "L8",
+      "id": "gh:liuwenji007/dsh-trust-check",
+      "title": "liuwenji007/dsh-trust-check",
+      "npm": "dsh-trust-check",
+      "display": "liuwenji007/dsh-trust-check",
+      "reason": "Static capability and injection disclosure."
+    },
+    {
+      "layer": "L9",
+      "id": "gh:moldkey/dsh-deepseekbase",
+      "title": "moldkey/dsh-deepseekbase",
+      "npm": "@liangjiehappy/dsh-deepseekbase",
+      "display": "moldkey/dsh-deepseekbase",
+      "reason": "Third-party index integration with install verdicts."
+    },
+    {
+      "layer": "L9",
+      "id": "gh:hoyyang/dsh-mall",
+      "title": "hoyyang/dsh-mall",
+      "npm": "dsh-mall",
+      "display": "hoyyang/dsh-mall",
+      "reason": "Refreshed catalog with pre-install review."
+    },
+    {
+      "layer": "L9",
+      "id": "gh:tangyixiao/dsh-version-manager",
+      "title": "tangyixiao/dsh-version-manager",
+      "npm": "dsh-version-manager",
+      "display": "tangyixiao/dsh-version-manager",
+      "reason": "Snapshots and replay-evidence-gated recovery."
+    }
+  ]
+}

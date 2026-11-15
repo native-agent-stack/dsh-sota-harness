@@ -1,0 +1,3 @@
+{"type":"session/start","sessionId":"fixture-session","seq":1,"payload":{"cwd":"/tmp/harness"}}
+{"type":"message/user","sessionId":"fixture-session","seq":2,"payload":{"text":"run the probe"}}
+{"type":"tool/result","sessionId":"fixture-session","seq":3,"payload":{"ok":true}}

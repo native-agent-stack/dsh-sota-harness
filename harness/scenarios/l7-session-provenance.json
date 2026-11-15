@@ -1,0 +1,7 @@
+{
+  "id": "l7-session-provenance",
+  "layer": "L7",
+  "title": "Session event provenance",
+  "anchor": "light-cheng/dsh-strata",
+  "fixture": "harness/fixtures/l7-session"
+}

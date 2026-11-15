@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "note": "Five layer probes, not a production install list.",
+  "allowlist": [
+    {
+      "id": "l1-lifecycle",
+      "layer": "L1",
+      "anchor": "FenrirCait/dsh-fail-guard",
+      "evidence": "E1",
+      "reason": "Pinned SOTA anchor for this layer probe."
+    },
+    {
+      "id": "l3-tool-schema",
+      "layer": "L3",
+      "anchor": "project-hy/dsh-claude-delegate",
+      "evidence": "E1",
+      "reason": "Pinned SOTA anchor for this layer probe."
+    },
+    {
+      "id": "l4-skill-routing",
+      "layer": "L4",
+      "anchor": "xuzhecomeon/dsh-research-suite",
+      "evidence": "E1",
+      "reason": "Pinned SOTA anchor for this layer probe."
+    },
+    {
+      "id": "l7-session-provenance",
+      "layer": "L7",
+      "anchor": "light-cheng/dsh-strata",
+      "evidence": "E1",
+      "reason": "Pinned SOTA anchor for this layer probe."
+    },
+    {
+      "id": "l8-install-policy",
+      "layer": "L8",
+      "anchor": "0QwQ0/dsh-ui-auth",
+      "evidence": "E1",
+      "reason": "Pinned SOTA anchor for this layer probe."
+    }
+  ]
+}

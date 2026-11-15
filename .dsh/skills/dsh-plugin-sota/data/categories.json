@@ -1,0 +1,473 @@
+{
+  "schemaVersion": 1,
+  "generatedFrom": "https://github.com/awesome-dsh-plugin/awesome-dsh-plugin",
+  "layers": [
+    {
+      "id": "L0",
+      "name": "Distribution & Composition",
+      "short": "profile, bundle, manifest, install"
+    },
+    {
+      "id": "L1",
+      "name": "Host Runtime & Lifecycle",
+      "short": "Cordis plugin, inject, effects, HMR"
+    },
+    {
+      "id": "L2",
+      "name": "Capability Seams & Services",
+      "short": "service definition/provider/consumer"
+    },
+    {
+      "id": "L3",
+      "name": "Tools & Model-Facing Context",
+      "short": "tools, schemas, execution policy"
+    },
+    {
+      "id": "L4",
+      "name": "Skills & Agent Instructions",
+      "short": "skill providers, progressive disclosure"
+    },
+    {
+      "id": "L5",
+      "name": "Agent Composition & Orchestration",
+      "short": "presets, hooks, subagents, goals"
+    },
+    {
+      "id": "L6",
+      "name": "Client UI & Experience",
+      "short": "client plugin, slots, nodes, resources"
+    },
+    {
+      "id": "L7",
+      "name": "Data, Sessions & Persistence",
+      "short": "events, projections, storage, migration"
+    },
+    {
+      "id": "L8",
+      "name": "Security, Privacy & Supply Chain",
+      "short": "sandbox, approval, auth, provenance"
+    },
+    {
+      "id": "L9",
+      "name": "Operations, Market & Ecosystem",
+      "short": "index, install, update, observability"
+    }
+  ],
+  "categories": [
+    {
+      "key": "agi",
+      "title": "AGI Architecture Exploration",
+      "titleZh": "AGI 架构探索",
+      "layer": "L5",
+      "secondary": [
+        "L2",
+        "L7"
+      ],
+      "focus": "Durable cognition loops with explicit evidence, budgets, and rollback.",
+      "exemplars": [
+        "gh:kenz1117/dsh-engram",
+        "gh:john-walks-slow/dsh-proactive/tree/main/packages/dsh-proactive",
+        "gh:ddl095/dsh-moa-native"
+      ]
+    },
+    {
+      "key": "ui",
+      "title": "UI Enhancements",
+      "titleZh": "UI 增强",
+      "layer": "L6",
+      "secondary": [
+        "L3"
+      ],
+      "focus": "Composable surfaces that extend slots/nodes without forking the Web Client.",
+      "exemplars": [
+        "gh:orderg-x/dsh-design-studio",
+        "gh:baitouwuya/dsh-super-cards",
+        "gh:cheesefox259/dsh-better-composer"
+      ]
+    },
+    {
+      "key": "usage",
+      "title": "Usage & Billing",
+      "titleZh": "用量与计费",
+      "layer": "L6",
+      "secondary": [
+        "L7"
+      ],
+      "focus": "Reconstructable accounting from session logs, with cache and cost provenance.",
+      "exemplars": [
+        "gh:shallbay/dsh-token-stats",
+        "gh:lovenndme/dsh-profile-stats",
+        "gh:bushizhanghan/dsh-routing-forensics"
+      ]
+    },
+    {
+      "key": "theme",
+      "title": "Themes & Appearance",
+      "titleZh": "主题与外观",
+      "layer": "L6",
+      "secondary": [],
+      "focus": "Token-level theming with preview, persistence, and import/export.",
+      "exemplars": [
+        "gh:cherrchen/dsh-theme-studio",
+        "gh:tkingxiao/dsh-any-background",
+        "gh:1020252969/dsh-wallpaper"
+      ]
+    },
+    {
+      "key": "model",
+      "title": "Models & Providers",
+      "titleZh": "模型与账号接入",
+      "layer": "L2",
+      "secondary": [
+        "L8"
+      ],
+      "focus": "Provider routing with failover, observability, and credential isolation.",
+      "exemplars": [
+        "gh:arcaneorion/dsh-model-channel-manager",
+        "gh:leafyezi233/dsh-model-gateway",
+        "gh:good-saltfish/dsh-auto-rerun"
+      ]
+    },
+    {
+      "key": "identity",
+      "title": "Identity & Communication",
+      "titleZh": "身份与通信",
+      "layer": "L5",
+      "secondary": [
+        "L4"
+      ],
+      "focus": "Identity and messaging that reuse native auth without leaking credentials.",
+      "exemplars": [
+        "gh:unknowcao/dsh-outlook",
+        "gh:elfmingh/dsh-prompt-manager",
+        "gh:buger-gif/cyber-im-avatar/tree/main/dsh-plugin"
+      ]
+    },
+    {
+      "key": "session",
+      "title": "Sessions & Messages",
+      "titleZh": "会话与消息",
+      "layer": "L7",
+      "secondary": [
+        "L6"
+      ],
+      "focus": "Context economics: deterministic folding, provenance, and recoverable history.",
+      "exemplars": [
+        "gh:light-cheng/dsh-strata",
+        "gh:yeqingtang/dsh-session-flow",
+        "gh:frog755/dsh-client-auto-retry"
+      ]
+    },
+    {
+      "key": "memory",
+      "title": "Memory",
+      "titleZh": "记忆",
+      "layer": "L7",
+      "secondary": [
+        "L2"
+      ],
+      "focus": "Bounded, auditable memory with consent, conflict handling, and retrieval quality.",
+      "exemplars": [
+        "gh:perrylink/dsh-memento",
+        "gh:slow-stack/mneme/tree/main/dsh-mneme",
+        "gh:eternalnight996/memory-eternal"
+      ]
+    },
+    {
+      "key": "tools",
+      "title": "Tools & Capabilities",
+      "titleZh": "工具与能力",
+      "layer": "L3",
+      "secondary": [
+        "L2"
+      ],
+      "focus": "Typed, cancellable tools with deferred schemas and policy-aware execution.",
+      "exemplars": [
+        "gh:project-hy/dsh-claude-delegate",
+        "gh:imzl-zl/dsh-toolbox-ui",
+        "gh:2026heshao/dsh-armory"
+      ]
+    },
+    {
+      "key": "wsl",
+      "title": "WSL & Windows Interop",
+      "titleZh": "WSL 与 Windows 互操作",
+      "layer": "L3",
+      "secondary": [
+        "L1"
+      ],
+      "focus": "Native platform bridging without breaking sandbox or write-root semantics.",
+      "exemplars": [
+        "gh:stallenlu/dsh-wsl-suite",
+        "gh:wang1462604987/dsh-wsl-sidebar",
+        "gh:xiny11451/dsh-wsl"
+      ]
+    },
+    {
+      "key": "browser",
+      "title": "Browser & Web",
+      "titleZh": "浏览器与网页",
+      "layer": "L3",
+      "secondary": [
+        "L8"
+      ],
+      "focus": "Reusable browser providers with authenticated, loopback-only control.",
+      "exemplars": [
+        "gh:lyp88997/dsh-browser-service",
+        "gh:orderg-x/dsh-chrome-bridge/tree/main/plugin",
+        "gh:drscrewdriver/dsh-union-search"
+      ]
+    },
+    {
+      "key": "vision",
+      "title": "Vision & Multimodal",
+      "titleZh": "视觉与多模态",
+      "layer": "L3",
+      "secondary": [
+        "L6"
+      ],
+      "focus": "Modality adapters that keep evidence and degrade gracefully.",
+      "exemplars": [
+        "gh:anionex/dsh-vision-toolkit",
+        "gh:cctv2333/dsh-vidlens",
+        "gh:q253595422/dsh-imagegen-video"
+      ]
+    },
+    {
+      "key": "voice",
+      "title": "Voice & Audio",
+      "titleZh": "语音与音频",
+      "layer": "L3",
+      "secondary": [
+        "L6"
+      ],
+      "focus": "Local-first audio pipelines with explicit device and permission handling.",
+      "exemplars": [
+        "gh:kekydream/dsh-meeting-room",
+        "gh:alan2z/dsh-speak",
+        "gh:biliye/dsh-voice-call"
+      ]
+    },
+    {
+      "key": "docs",
+      "title": "Docs & Rendering",
+      "titleZh": "文档与渲染",
+      "layer": "L6",
+      "secondary": [
+        "L3"
+      ],
+      "focus": "Source-grounded rendering with stable anchors and offline artifacts.",
+      "exemplars": [
+        "gh:polinnizhong/dsh-knit",
+        "gh:ggboya/dsh-paper-reader",
+        "gh:nonefire/drender/tree/main/plugins/hosts/dsh"
+      ]
+    },
+    {
+      "key": "skill",
+      "title": "Skills",
+      "titleZh": "技能包",
+      "layer": "L4",
+      "secondary": [
+        "L0"
+      ],
+      "focus": "Progressive-disclosure skills with discovery, provenance, and evaluation.",
+      "exemplars": [
+        "gh:xuzhecomeon/dsh-research-suite",
+        "gh:polinnizhong/dsh-skill-intelligence",
+        "gh:littleblacktong/dsh-plugin-superpowers"
+      ]
+    },
+    {
+      "key": "workflow",
+      "title": "Workflow & Automation",
+      "titleZh": "工作流与自动化",
+      "layer": "L5",
+      "secondary": [
+        "L3"
+      ],
+      "focus": "Durable orchestration with budgets, stop conditions, and verification gates.",
+      "exemplars": [
+        "gh:mrzturn/dsh-switchman",
+        "gh:eccvik/lmtagent",
+        "gh:leo-sail/dsh-plugin-agent-collaboration/tree/main/packages/bundle/agent-collaboration"
+      ]
+    },
+    {
+      "key": "git",
+      "title": "Git & Code Review",
+      "titleZh": "Git 与代码评审",
+      "layer": "L3",
+      "secondary": [
+        "L6"
+      ],
+      "focus": "Review surfaces that make diffs, lineage, and approval auditable.",
+      "exemplars": [
+        "gh:binaryinject/dsh-review-checkout",
+        "gh:9087/dsh-diff-approval",
+        "gh:zjj1769404838/dsh-git-panel"
+      ]
+    },
+    {
+      "key": "notify",
+      "title": "Notifications & Integrations",
+      "titleZh": "通知与集成",
+      "layer": "L5",
+      "secondary": [
+        "L8"
+      ],
+      "focus": "Event-driven outbound channels with resumable sessions and consent.",
+      "exemplars": [
+        "gh:leo-cjw/dsh-pharos",
+        "gh:ivanwu2015/dsh-connect/tree/main/packages/connect",
+        "gh:hughpython/dsh-tc-mail"
+      ]
+    },
+    {
+      "key": "dev",
+      "title": "Development & Runtime",
+      "titleZh": "开发与运行时",
+      "layer": "L1",
+      "secondary": [
+        "L0"
+      ],
+      "focus": "Install-time diagnostics, drift detection, and reversible operations.",
+      "exemplars": [
+        "gh:xiaoyuyu6420/dsh-backup",
+        "gh:stallenlu/dsh-steward",
+        "gh:ven314/dsh-conflict-doctor"
+      ]
+    },
+    {
+      "key": "security",
+      "title": "Security & Permissions",
+      "titleZh": "安全与权限",
+      "layer": "L8",
+      "secondary": [
+        "L3"
+      ],
+      "focus": "Fail-closed policy, least privilege, and disclosure of plugin capability.",
+      "exemplars": [
+        "gh:0qwq0/dsh-ui-auth",
+        "gh:asktheway/dsh-jev-interceptor",
+        "gh:liuwenji007/dsh-trust-check"
+      ]
+    },
+    {
+      "key": "remote",
+      "title": "Remote & Mobile",
+      "titleZh": "远程与移动端",
+      "layer": "L6",
+      "secondary": [
+        "L8"
+      ],
+      "focus": "Authenticated narrow surfaces, not broad exposure of the local GUI.",
+      "exemplars": [
+        "gh:drscrewdriver/dsh-im-union",
+        "gh:dingchenhui0618-arch/dsh-in-hand",
+        "gh:toddpan/dsh-webapi"
+      ]
+    },
+    {
+      "key": "market",
+      "title": "Plugin Markets & Managers",
+      "titleZh": "插件市场与管理",
+      "layer": "L9",
+      "secondary": [
+        "L0"
+      ],
+      "focus": "Index-driven discovery with verification, provenance, and safe install.",
+      "exemplars": [
+        "gh:moldkey/dsh-deepseekbase",
+        "gh:hoyyang/dsh-mall",
+        "gh:tangyixiao/dsh-version-manager"
+      ]
+    },
+    {
+      "key": "fun",
+      "title": "Just for Fun",
+      "titleZh": "娱乐",
+      "layer": "L6",
+      "secondary": [
+        "L5"
+      ],
+      "focus": "Event-derived state machines that stay decoupled from rendering.",
+      "exemplars": [
+        "gh:xkk6663/dsh-live2d-mao/tree/main/packages/dsh-live2d-mao",
+        "gh:dingchenhui0618-arch/dsh-pet-ledger",
+        "gh:zyfgood/dsh-whale-girl"
+      ]
+    }
+  ],
+  "exemplarNotes": {
+    "gh:kenz1117/dsh-engram": "Hybrid FTS5 + local-vector retrieval with RRF, an evidence gate, and a provenance chain.",
+    "gh:john-walks-slow/dsh-proactive/tree/main/packages/dsh-proactive": "Durable host alarms with quiet hours, budgets, cold-session wake, and silent-turn tombstones.",
+    "gh:ddl095/dsh-moa-native": "Generation-time Mixture-of-Agents with parallel drafts and a tool-capable aggregator.",
+    "gh:orderg-x/dsh-design-studio": "Canvas workbench with floating tool groups, recent work, and template-first entry.",
+    "gh:baitouwuya/dsh-super-cards": "Model-callable native cards (29 block types) instead of Markdown, with auto-layout.",
+    "gh:cheesefox259/dsh-better-composer": "Composer-level Markdown semantics, deterministic completions, and list continuation.",
+    "gh:shallbay/dsh-token-stats": "Per-session/turn token accounting with cache classes and peak/off-peak cost.",
+    "gh:lovenndme/dsh-profile-stats": "Usage profile folded from local session logs through ctx.sessionQuery.",
+    "gh:bushizhanghan/dsh-routing-forensics": "Deterministic replay that finds expensive-model-on-cheap-work waste.",
+    "gh:cherrchen/dsh-theme-studio": "Settings-integrated theme row with previews, persistence, and JSON import/export.",
+    "gh:tkingxiao/dsh-any-background": "Independent opacity/blur controls across eight shell surfaces.",
+    "gh:1020252969/dsh-wallpaper": "Uses shell tokens and a negative z-index layer, with a bundled fallback image.",
+    "gh:arcaneorion/dsh-model-channel-manager": "Virtual round-robin route with failover, retry, cooldown, and speed tests.",
+    "gh:leafyezi233/dsh-model-gateway": "OpenAI-compatible egress over configured models with named ordered groups.",
+    "gh:good-saltfish/dsh-auto-rerun": "In-turn retry with capped jittered backoff, server hints, and fallback.",
+    "gh:unknowcao/dsh-outlook": "Zero-credential COM automation with 13 tools and a sidebar badge.",
+    "gh:elfmingh/dsh-prompt-manager": "Layered global/workspace/session prompt profiles with line-level override diffs.",
+    "gh:buger-gif/cyber-im-avatar/tree/main/dsh-plugin": "Reuses logged-in IM CLIs, polls only watched chats, and wakes the bound session.",
+    "gh:light-cheng/dsh-strata": "Deterministic tool-output cards, tiered summaries, and a local decompression archive.",
+    "gh:yeqingtang/dsh-session-flow": "Cross-session archive with lineage, search, summaries, export, and native embeds.",
+    "gh:frog755/dsh-client-auto-retry": "Resumes interrupted turns with backoff, cooldown, a cap, and boot-time scanning.",
+    "gh:perrylink/dsh-memento": "Typed ctx.memory seam, SQLite provider, frozen snapshot, and approval-gated writes.",
+    "gh:slow-stack/mneme/tree/main/dsh-mneme": "Idle-time consolidation, conflict freezing, and a replayable audit trail.",
+    "gh:eternalnight996/memory-eternal": "Human-approved writes, an immutable audit log, and model-free FTS5/BM25 recall.",
+    "gh:project-hy/dsh-claude-delegate": "Official Agent SDK delegation with 19 per-call controls and result return.",
+    "gh:imzl-zl/dsh-toolbox-ui": "Deferred MCP tool schemas via ToolSearch: names only until a tool is needed.",
+    "gh:2026heshao/dsh-armory": "Unified MCP/skill/expert board with scopes, schemas, and connection state.",
+    "gh:stallenlu/dsh-wsl-suite": "WSL distro discovery, UNC workspaces, and a real Linux PTY in the sidebar.",
+    "gh:wang1462604987/dsh-wsl-sidebar": "Typed .wslconfig/wsl.conf editing plus long-running processes in any distro.",
+    "gh:xiny11451/dsh-wsl": "WSL file tools plus an explicit one-off-command vs persistent-terminal choice.",
+    "gh:lyp88997/dsh-browser-service": "ctx.browser seam to a loopback CDP daemon with bearer auth and a path allowlist.",
+    "gh:orderg-x/dsh-chrome-bridge/tree/main/plugin": "Drives the user's real Chrome, including same-origin iframes, over CDP.",
+    "gh:drscrewdriver/dsh-union-search": "Tiered 28-engine union with keyless fallbacks and upstream consolidation.",
+    "gh:anionex/dsh-vision-toolkit": "Text-only-model vision path with OCR, UI reproduction, grounding, and pixel diff.",
+    "gh:cctv2333/dsh-vidlens": "Subtitle-first video sampling with chapters, frames, and AudioSet sound tagging.",
+    "gh:q253595422/dsh-imagegen-video": "Per-channel model catalogs and per-family request shaping across providers.",
+    "gh:kekydream/dsh-meeting-room": "Local transcription/diarization, notes, actions, exports, and review scoring.",
+    "gh:alan2z/dsh-speak": "Zero-dependency, event-driven system TTS with no model or token cost.",
+    "gh:biliye/dsh-voice-call": "Browser VAD, local ASR, and a floating call control surface.",
+    "gh:polinnizhong/dsh-knit": "Workspace document index ranked by conversation relevance, lexical-first.",
+    "gh:ggboya/dsh-paper-reader": "PDF library with page-anchored citations, select-to-ask, and a tutor preset.",
+    "gh:nonefire/drender/tree/main/plugins/hosts/dsh": "Validates md-report/1 and renders offline interactive HTML with SQLite/CSV data.",
+    "gh:xuzhecomeon/dsh-research-suite": "Ten domain skills + fifteen tools; 450 skills curated into 103 cards with a ledger.",
+    "gh:polinnizhong/dsh-skill-intelligence": "Read-only inspector of observed skill loads and discoverability.",
+    "gh:littleblacktong/dsh-plugin-superpowers": "Ports fourteen composable engineering skills as native DSH skills.",
+    "gh:mrzturn/dsh-switchman": "Task dispatch, optional Agent Teams, tiered verification, and context folding.",
+    "gh:eccvik/lmtagent": "Eight role presets, four-wave DAG scheduling, concurrency slots, and PostgreSQL state.",
+    "gh:leo-sail/dsh-plugin-agent-collaboration/tree/main/packages/bundle/agent-collaboration": "Persistent bots/rooms with per-bot model, permissions, workspace, and session.",
+    "gh:binaryinject/dsh-review-checkout": "Per-turn net-diff cards and a syntax-highlighted review tab with open-at-line.",
+    "gh:9087/dsh-diff-approval": "Collects edit/write changes and supports block/file keep-or-revert review.",
+    "gh:zjj1769404838/dsh-git-panel": "Git workbench with OAuth/PAT and per-repository permissions.",
+    "gh:leo-cjw/dsh-pharos": "System toast, per-kind chime, and tab marker for approval/question/background events.",
+    "gh:ivanwu2015/dsh-connect/tree/main/packages/connect": "Bridges sessions to Feishu/Telegram/DingTalk with streaming cards and task metrics.",
+    "gh:hughpython/dsh-tc-mail": "Mail client with sandboxed HTML and remote images blocked by default.",
+    "gh:xiaoyuyu6420/dsh-backup": "Backup/restore/migration with sha256 verification, retention, and auto-rollback.",
+    "gh:stallenlu/dsh-steward": "Read-only install diagnostics: boot crash, config drift, backup freshness, compatibility.",
+    "gh:ven314/dsh-conflict-doctor": "Capability graph comparing the running Loader with on-disk patch layers.",
+    "gh:0qwq0/dsh-ui-auth": "Covers pages, /api, /plugins, and WebSocket upgrades with PBKDF2 and HttpOnly cookies.",
+    "gh:asktheway/dsh-jev-interceptor": "Policy at tools/pre-execute: deny high-risk, escalate ambiguous, auto-approve reversible.",
+    "gh:liuwenji007/dsh-trust-check": "Static disclosure of capabilities, destinations, install scripts, and injection shapes.",
+    "gh:drscrewdriver/dsh-im-union": "Fifteen channel adapters across twelve platforms behind one bridge.",
+    "gh:dingchenhui0618-arch/dsh-in-hand": "PWA for sessions, jobs, subagents, goals, workflows, and approvals with stop control.",
+    "gh:toddpan/dsh-webapi": "47 REST+SSE routes for workspaces, sessions, models, presets, and settings.",
+    "gh:moldkey/dsh-deepseekbase": "Third-party index integration with sandbox install verdicts and risk levels.",
+    "gh:hoyyang/dsh-mall": "Refreshed GitHub topic catalog with pre-install review and five-dimension scoring.",
+    "gh:tangyixiao/dsh-version-manager": "Profile/skill snapshot and replay-evidence-gated recovery.",
+    "gh:xkk6663/dsh-live2d-mao/tree/main/packages/dsh-live2d-mao": "Connector-only event fold into twelve work phases; rendering stays separate.",
+    "gh:dingchenhui0618-arch/dsh-pet-ledger": "Achievements derived only from real session events, expandable to evidence.",
+    "gh:zyfgood/dsh-whale-girl": "Hand-written SVG/CSS with zero runtime deps and state-driven animation."
+  }
+}

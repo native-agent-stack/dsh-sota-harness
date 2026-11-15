@@ -1,0 +1,7 @@
+{
+  "id": "l1-lifecycle",
+  "layer": "L1",
+  "title": "Reversible lifecycle guard",
+  "anchor": "FenrirCait/dsh-fail-guard",
+  "fixture": "harness/fixtures/l1-lifecycle"
+}

@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DSH Plugin Landscape - Final Architecture Manifest</title>
+<style>
+:root {
+  --bg: #070b14;
+  --panel: #0d1626;
+  --panel-2: #111f36;
+  --line: #24395c;
+  --text: #e9eefb;
+  --muted: #99a8c6;
+  --accent: #67e8c9;
+  --accent-2: #8b8cff;
+  --warn: #ffc46b;
+  --danger: #ff7c92;
+  --radius: 16px;
+  --tag-bg: rgba(103,232,201,.08);
+  --tag-fg: #c9f7ed;
+  --tag-line: rgba(103,232,201,.2);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background:
+    radial-gradient(1100px 520px at 12% -8%, rgba(103,232,201,.14), transparent 60%),
+    radial-gradient(900px 500px at 90% 0%, rgba(139,140,255,.18), transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: .9em;
+  color: #c9f7ed;
+  background: rgba(103,232,201,.08);
+  border: 1px solid rgba(103,232,201,.16);
+  padding: .08em .35em;
+  border-radius: 6px;
+}
+.wrap { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+.hero { padding: 64px 0 28px; border-bottom: 1px solid var(--line); }
+.eyebrow { color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.hero h1 { margin: 12px 0 10px; font-size: clamp(38px, 6vw, 66px); line-height: .98; letter-spacing: -.04em; }
+.lede { max-width: 760px; color: var(--muted); font-size: 18px; }
+.meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.meta span { background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; color: var(--muted); font-size: 13px; }
+.meta b { color: var(--text); }
+main { padding: 28px 0 64px; }
+section { margin: 42px 0; }
+.section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+h2 { margin: 0; font-size: 24px; letter-spacing: -.02em; }
+.section-head p { margin: 0; color: var(--muted); font-size: 13px; }
+.kpi-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.kpi { background: linear-gradient(180deg, rgba(255,255,255,.035), transparent), var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.kpi-label { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; }
+.kpi strong { display: block; font-size: 30px; margin: 8px 0 2px; letter-spacing: -.03em; }
+.kpi small { color: var(--muted); font-size: 12px; }
+.note { color: var(--muted); font-size: 13px; margin: 12px 0 0; }
+.flow-row { display: flex; align-items: stretch; gap: 8px; overflow-x: auto; padding: 4px 2px 12px; }
+.stage { flex: 1 0 180px; min-width: 180px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; }
+.stage.manual { border-style: dashed; }
+.stage-head h3 { margin: 0 0 3px; font-size: 14px; }
+.stage-head p { margin: 0 0 12px; color: var(--muted); font-size: 11px; }
+.chips { display: grid; gap: 7px; }
+.chip { background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; padding: 8px 10px; }
+.chip b { display: block; font-size: 12px; }
+.chip span { display: block; color: var(--muted); font-size: 10.5px; margin-top: 2px; }
+.chip.manual { border-style: dashed; }
+.flow-arrow { display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--muted); flex: 0 0 34px; font-size: 10px; }
+.flow-arrow i { font-style: normal; font-size: 22px; color: var(--accent); line-height: 1; }
+.guards { margin-top: 12px; background: linear-gradient(90deg, rgba(139,140,255,.08), transparent); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.guards h3 { margin: 0 0 4px; font-size: 14px; }
+.guards p { margin: 0 0 12px; color: var(--muted); font-size: 12px; }
+.guards .chips { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.steps { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; }
+.step { flex: 1 0 150px; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.step .n { color: var(--accent); font-size: 11px; font-weight: 700; letter-spacing: .12em; }
+.step h3 { margin: 6px 0 4px; font-size: 13px; }
+.step p { margin: 0; color: var(--muted); font-size: 11px; }
+.step-arrow { flex: 0 0 22px; display: grid; place-items: center; color: var(--accent); font-size: 20px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.panel h3 { margin: 0 0 10px; font-size: 15px; }
+.panel ul { margin: 0; padding-left: 18px; color: var(--muted); }
+.panel li { margin: 6px 0; }
+.panel.hard { border-top: 3px solid var(--danger); }
+.panel.warn { border-top: 3px solid var(--warn); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+table { width: 100%; border-collapse: collapse; min-width: 680px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.06); font-size: 12.5px; }
+th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; background: rgba(255,255,255,.025); }
+tr:last-child td { border-bottom: 0; }
+td.num, th.num { text-align: right; }
+.equation { margin: 12px 0 0; padding: 12px 14px; border: 1px dashed var(--line); border-radius: 12px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; }
+.layer-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.layer-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.layer-id { color: var(--accent); font-size: 11px; font-weight: 800; letter-spacing: .14em; }
+.layer-card h3 { margin: 6px 0 4px; font-size: 13px; }
+.layer-card p { margin: 0; color: var(--muted); font-size: 11px; }
+.layer-card .sota-line { color: var(--text); font-size: 11px; margin: 8px 0 10px; min-height: 0; }
+.layer-detail { border-top: 1px solid rgba(255,255,255,.06); margin-top: 10px; padding-top: 8px; }
+.layer-detail span { display: block; color: var(--muted); font-size: 9.5px; text-transform: uppercase; letter-spacing: .1em; }
+.layer-detail b { display: block; color: var(--text); font-size: 10.5px; font-weight: 500; margin-top: 2px; }
+.sota-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.sota-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px; }
+.sota-card h3 { margin: 6px 0 4px; font-size: 14px; }
+.sota-card p { margin: 0 0 10px; color: var(--muted); font-size: 11px; }
+.tag-list { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.tag { display: inline-block; background: var(--tag-bg); border: 1px solid var(--tag-line); color: var(--tag-fg); border-radius: 999px; padding: 3px 7px; font-size: 9.5px; }
+.matrix table { min-width: 980px; }
+.evidence-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.evidence-row span { border: 1px solid var(--line); border-radius: 999px; padding: 5px 9px; color: var(--muted); font-size: 10.5px; }
+.evidence-row b { color: var(--accent); }
+.layer-metrics { display: flex; gap: 10px; margin-top: 10px; color: var(--muted); font-size: 10.5px; }
+.layer-metrics b { color: var(--text); }
+.check-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.check { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 12px; padding: 13px; }
+.check b { display: block; font-size: 12.5px; }
+.check span { display: block; color: var(--muted); font-size: 11px; margin-top: 3px; }
+.links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 18px; padding-left: 0; list-style: none; }
+.links li { border-bottom: 1px solid rgba(255,255,255,.06); padding: 9px 0; }
+.links small { color: var(--muted); display: block; }
+footer { border-top: 1px solid var(--line); padding: 24px 0 48px; color: var(--muted); font-size: 12px; }
+footer b { color: var(--text); }
+@media (max-width: 900px) {
+  .kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .layer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sota-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .check-grid { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+  .guards .chips { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 620px) {
+  .wrap { width: min(100% - 24px, 1180px); }
+  .hero { padding-top: 42px; }
+  .flow-row { flex-direction: column; overflow: visible; }
+  .flow-arrow { flex: 0 0 auto; padding: 2px 0; }
+  .flow-arrow i { transform: rotate(90deg); }
+  .guards .chips, .links, .sota-grid { grid-template-columns: 1fr; }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f8fc;
+    --panel: #ffffff;
+    --panel-2: #f1f5fb;
+    --line: #d5deec;
+    --text: #172033;
+    --muted: #53627c;
+    --accent: #087f6d;
+    --accent-2: #5a5bd6;
+    --warn: #9a5b00;
+    --danger: #b4233a;
+    --tag-bg: #e8faf5;
+    --tag-fg: #075e52;
+    --tag-line: #b7e6db;
+  }
+  body { background: #f6f8fc; color: var(--text); }
+  .chip, .guards, .meta span, .equation, .step, .stage, .kpi, .check, .panel, .layer-card, .sota-card, .table-wrap { background: #fff; border-color: var(--line); }
+  .chip { background: #f8fafd; }
+  .guards { background: #fff; }
+  .meta span { background: #fff; }
+  .table-wrap th { background: #f1f5fb; }
+  .evidence-row span { background: #fff; }
+  code { color: #075e52; background: #e8faf5; border-color: #b7e6db; }
+  .eyebrow, .layer-id { color: var(--accent); }
+}
+@media print {
+  body { background: #fff; color: #111; }
+  .hero, .panel, .kpi, .stage, .step, .check, .layer-card, .sota-card, .table-wrap, .guards, .chip, .meta span, .equation { background: #fff; border-color: #ccc; }
+  .lede, .note, .kpi small, .stage-head p, .chip span, .step p, .panel ul, .check span, .links small, footer, .sota-card p, .layer-detail span, .layer-metrics, .evidence-row span { color: #444; }
+  .layer-detail b, .layer-card h3, .sota-card h3, td, th { color: #111; }
+  .layer-id, .eyebrow { color: #0645ad; }
+  .tag { background: #eef6ff; border-color: #b8c6dd; color: #0645ad; }
+  code { color: #111; background: #f3f6fb; border-color: #ccc; }
+  .evidence-row span { background: #fff; }
+  .table-wrap th { background: #f3f6fb; }
+  a { color: #0645ad; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">DEEPSEEK HARNESS / PLUGIN LANDSCAPE</div>
+    <h1>Architecture Manifest</h1>
+    <p class="lede">Full-catalog coverage of the awesome-dsh-plugin ecosystem, a ten-layer SOTA model, and the validation path that keeps the manifest honest.</p>
+    <div class="meta">
+      <span>Snapshot <b>2026-11-14 20:37:26.554 UTC</b></span>
+      <span>Manifest <b>v1</b></span>
+      <span><b>11,111</b> listed &middot; <b>11,119</b> known</span>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  <section id="at-a-glance">
+    <div class="section-head"><h2>At a glance</h2><p>current snapshot</p></div>
+    <div class="kpi-grid"><div class="kpi"><span class="kpi-label">Listed entries</span><strong>11,111</strong><small>README entries</small></div><div class="kpi"><span class="kpi-label">Known universe</span><strong>11,119</strong><small>listed + index-only</small></div><div class="kpi"><span class="kpi-label">npm-indexed</span><strong>5,635</strong><small>known npm version</small></div><div class="kpi"><span class="kpi-label">GitHub-only</span><strong>5,476</strong><small>manual install path</small></div><div class="kpi"><span class="kpi-label">Index-only</span><strong>8</strong><small>outside the listed count</small></div><div class="kpi"><span class="kpi-label">Categories</span><strong>23</strong><small>all covered</small></div><div class="kpi"><span class="kpi-label">Exemplars</span><strong>69</strong><small>3 per category</small></div><div class="kpi"><span class="kpi-label">Anchors</span><strong>30</strong><small>3 per layer + 36 prose</small></div></div>
+    <p class="note">Scale model: the catalog is local indexed data, not 11,111 mounted plugins. Query it, shortlist three, and install only with explicit consent.</p>
+  </section>
+
+  <section id="architecture">
+    <div class="section-head"><h2>Architecture graph</h2><p>sources &rarr; normalize &rarr; data &rarr; builders &rarr; surfaces</p></div>
+    <p class="note">Only the Awesome README and the npm index are parsed. Plugin repositories are reference evidence for exemplars and anchors, not parser inputs.</p>
+    <div class="flow-row">
+      <div class="stage"><div class="stage-head"><h3>Sources</h3><p>upstream inputs</p></div><div class="chips"><div class="chip "><b>Awesome README</b><span>curated list</span></div><div class="chip "><b>npm plugin index</b><span>published versions</span></div></div></div>
+      <div class="flow-arrow"><span>parse</span><i>&#8594;</i></div>
+      <div class="stage"><div class="stage-head"><h3>Normalize</h3><p>refresh-catalog</p></div><div class="chips"><div class="chip "><b>refresh-catalog</b><span>parse + match + stats</span></div></div></div>
+      <div class="flow-arrow"><span>write</span><i>&#8594;</i></div>
+      <div class="stage"><div class="stage-head"><h3>Data</h3><p>normalized snapshot</p></div><div class="chips"><div class="chip "><b>catalog.jsonl</b><span>11,111 entries</span></div><div class="chip "><b>stats.json</b><span>recomputed totals</span></div><div class="chip "><b>index-only.json</b><span>8 supplements</span></div></div></div>
+      <div class="flow-arrow"><span>build</span><i>&#8594;</i></div>
+      <div class="stage"><div class="stage-head"><h3>Builders</h3><p>read data, write surfaces</p></div><div class="chips"><div class="chip "><b>build-landscape</b><span>catalog + stats + landscape-content</span></div><div class="chip "><b>build-coverage</b><span>stats</span></div><div class="chip "><b>build-report-summary</b><span>stats</span></div></div></div>
+      <div class="flow-arrow"><span>render</span><i>&#8594;</i></div>
+      <div class="stage"><div class="stage-head"><h3>Surfaces</h3><p>human and model views</p></div><div class="chips"><div class="chip "><b>landscape.md</b><span>23 categories</span></div><div class="chip "><b>coverage.md</b><span>data appendix</span></div><div class="chip "><b>report README</b><span>summary block generated</span></div><div class="chip manual"><b>SKILL.md</b><span>routing + method</span></div></div></div>
+    </div>
+    <div class="guards">
+      <h3>Guards</h3>
+      <p>Guards observe data and surfaces; they do not generate content. Dashed chips are manual surfaces.</p>
+      <div class="chips"><div class="chip "><b>refresh check</b><span>catalog + stats + index-only + anchors</span></div><div class="chip "><b>anchor validator/tests</b><span>exact IDs, 3 per layer, prose set</span></div><div class="chip "><b>warning tests</b><span>legitimate variation warns</span></div><div class="chip "><b>doc validator/tests</b><span>report + landscape + coverage + architecture</span></div></div>
+    </div>
+  </section>
+
+  <section id="repo-decision">
+    <div class="section-head"><h2>Repository &rarr; decision</h2><p>evidence to action</p></div>
+    <p class="note">A listed repository becomes a catalog entry through the README; refresh-catalog does not clone or parse repository code.</p>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Listed repository</h3><p>GitHub or npm identity in the README</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">02</div><h3>Catalog entry</h3><p>title, description, category, npm identity</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">03</div><h3>Category + layer</h3><p>where the work belongs and which seams apply</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">04</div><h3>Anchors + exemplars</h3><p>comparable implementations and evidence</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">05</div><h3>Decision brief</h3><p>adopt, trial, build, avoid, or insufficient evidence</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">06</div><h3>Install / verify / rollback</h3><p>exact spec, profile, checks, removal path</p></div>
+    </div>
+  </section>
+
+  <section id="automation">
+    <div class="section-head"><h2>SOTA automation loop</h2><p>discover, classify, prove, act</p></div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Frame</h3><p>outcome, host, constraints, evidence bar</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">02</div><h3>Discover</h3><p>query catalog, then all 23 categories</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">03</div><h3>Classify</h3><p>primary layer and documented seam</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">04</div><h3>Shortlist</h3><p>three architectures, not three names</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">05</div><h3>Evaluate</h3><p>evidence E0-E4 and eight-axis rubric</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">06</div><h3>Decide</h3><p>adopt, trial, build, avoid, or insufficient</p></div>
+      <div class="step-arrow">&#8594;</div>
+      <div class="step"><div class="n">07</div><h3>Verify</h3><p>disposable profile, failure path, rollback</p></div>
+    </div>
+    <div class="evidence-row">
+      <span><b>E0</b> claim</span><span><b>E1</b> source inspected</span><span><b>E2</b> booted</span><span><b>E3</b> behavior exercised</span><span><b>E4</b> reproduced</span>
+    </div>
+  </section>
+
+  <section id="coverage">
+    <div class="section-head"><h2>Coverage ledger</h2><p>snapshot totals</p></div>
+    <div class="table-wrap"><table><thead><tr><th>Metric</th><th class="num">Count</th><th>Meaning</th></tr></thead><tbody><tr><td>Listed entries</td><td class="num">11,111</td><td>README entries</td></tr><tr><td>Known universe</td><td class="num">11,119</td><td>listed + index-only</td></tr><tr><td>npm-indexed entries</td><td class="num">5,635</td><td>with a known version</td></tr><tr><td>Unique npm packages</td><td class="num">5,635</td><td>distinct package names</td></tr><tr><td>GitHub-only</td><td class="num">5,476</td><td>manual install path</td></tr><tr><td>Index packages</td><td class="num">5,643</td><td>npm index total</td></tr><tr><td>Index-only</td><td class="num">8</td><td>outside the listed count</td></tr><tr><td>Categories</td><td class="num">23</td><td>all covered</td></tr><tr><td>Exemplars</td><td class="num">69</td><td>3 per category</td></tr><tr><td>Layers</td><td class="num">10</td><td>SOTA model</td></tr><tr><td>Table anchors</td><td class="num">30</td><td>3 per layer</td></tr><tr><td>Prose anchors</td><td class="num">36</td><td>layer-model set</td></tr></tbody></table></div>
+    <div class="equation">5,643 index packages = 5,635 unique matched packages + 8 index-only packages</div>
+    <div class="section-head" style="margin-top:26px"><h2>Category coverage</h2><p>all 23 categories</p></div>
+    <div class="table-wrap"><table><thead><tr><th>Key</th><th>Category</th><th class="num">Entries</th><th class="num">npm</th><th>Layer</th></tr></thead><tbody><tr><td><code>agi</code></td><td>AGI Architecture Exploration</td><td class="num">82</td><td class="num">45</td><td>L5</td></tr><tr><td><code>ui</code></td><td>UI Enhancements</td><td class="num">2,232</td><td class="num">1,078</td><td>L6</td></tr><tr><td><code>usage</code></td><td>Usage &amp; Billing</td><td class="num">598</td><td class="num">285</td><td>L6</td></tr><tr><td><code>theme</code></td><td>Themes &amp; Appearance</td><td class="num">405</td><td class="num">181</td><td>L6</td></tr><tr><td><code>model</code></td><td>Models &amp; Providers</td><td class="num">562</td><td class="num">299</td><td>L2</td></tr><tr><td><code>identity</code></td><td>Identity &amp; Communication</td><td class="num">132</td><td class="num">71</td><td>L5</td></tr><tr><td><code>session</code></td><td>Sessions &amp; Messages</td><td class="num">855</td><td class="num">435</td><td>L7</td></tr><tr><td><code>memory</code></td><td>Memory</td><td class="num">478</td><td class="num">244</td><td>L7</td></tr><tr><td><code>tools</code></td><td>Tools &amp; Capabilities</td><td class="num">1,528</td><td class="num">825</td><td>L3</td></tr><tr><td><code>wsl</code></td><td>WSL &amp; Windows Interop</td><td class="num">88</td><td class="num">12</td><td>L3</td></tr><tr><td><code>browser</code></td><td>Browser &amp; Web</td><td class="num">219</td><td class="num">134</td><td>L3</td></tr><tr><td><code>vision</code></td><td>Vision &amp; Multimodal</td><td class="num">200</td><td class="num">100</td><td>L3</td></tr><tr><td><code>voice</code></td><td>Voice &amp; Audio</td><td class="num">148</td><td class="num">81</td><td>L3</td></tr><tr><td><code>docs</code></td><td>Docs &amp; Rendering</td><td class="num">208</td><td class="num">113</td><td>L6</td></tr><tr><td><code>skill</code></td><td>Skills</td><td class="num">397</td><td class="num">167</td><td>L4</td></tr><tr><td><code>workflow</code></td><td>Workflow &amp; Automation</td><td class="num">667</td><td class="num">368</td><td>L5</td></tr><tr><td><code>git</code></td><td>Git &amp; Code Review</td><td class="num">195</td><td class="num">104</td><td>L3</td></tr><tr><td><code>notify</code></td><td>Notifications &amp; Integrations</td><td class="num">369</td><td class="num">185</td><td>L5</td></tr><tr><td><code>dev</code></td><td>Development &amp; Runtime</td><td class="num">632</td><td class="num">337</td><td>L1</td></tr><tr><td><code>security</code></td><td>Security &amp; Permissions</td><td class="num">286</td><td class="num">155</td><td>L8</td></tr><tr><td><code>remote</code></td><td>Remote &amp; Mobile</td><td class="num">322</td><td class="num">179</td><td>L6</td></tr><tr><td><code>market</code></td><td>Plugin Markets &amp; Managers</td><td class="num">145</td><td class="num">75</td><td>L9</td></tr><tr><td><code>fun</code></td><td>Just for Fun</td><td class="num">363</td><td class="num">162</td><td>L6</td></tr></tbody></table></div>
+  </section>
+
+  <section id="category-sota">
+    <div class="section-head"><h2>Category SOTA matrix</h2><p>all 23 categories, three exemplars each</p></div>
+    <div class="table-wrap matrix"><table><thead><tr><th>Key</th><th>Category</th><th class="num">Entries</th><th class="num">npm</th><th>Layer</th><th>SOTA focus</th><th>Exemplars</th></tr></thead><tbody><tr><td><code>agi</code></td><td><b>AGI Architecture Exploration</b></td><td class="num">82</td><td class="num">45</td><td>L5</td><td>Durable cognition loops with explicit evidence, budgets, and rollback.</td><td><div class="tag-list"><span class="tag" title="Hybrid FTS5 + local-vector retrieval with RRF, an evidence gate, and a provenance chain.">kenz1117/dsh-engram</span><span class="tag" title="Durable host alarms with quiet hours, budgets, cold-session wake, and silent-turn tombstones.">dsh-proactive</span><span class="tag" title="Generation-time Mixture-of-Agents with parallel drafts and a tool-capable aggregator.">DDL095/dsh-moa-native</span></div></td></tr><tr><td><code>ui</code></td><td><b>UI Enhancements</b></td><td class="num">2,232</td><td class="num">1,078</td><td>L6</td><td>Composable surfaces that extend slots/nodes without forking the Web Client.</td><td><div class="tag-list"><span class="tag" title="Canvas workbench with floating tool groups, recent work, and template-first entry.">OrderG-X/dsh-design-studio</span><span class="tag" title="Model-callable native cards (29 block types) instead of Markdown, with auto-layout.">baitouwuya/dsh-super-cards</span><span class="tag" title="Composer-level Markdown semantics, deterministic completions, and list continuation.">CheeseFox259/dsh-better-composer</span></div></td></tr><tr><td><code>usage</code></td><td><b>Usage &amp; Billing</b></td><td class="num">598</td><td class="num">285</td><td>L6</td><td>Reconstructable accounting from session logs, with cache and cost provenance.</td><td><div class="tag-list"><span class="tag" title="Per-session/turn token accounting with cache classes and peak/off-peak cost.">ShallBay/dsh-token-stats</span><span class="tag" title="Usage profile folded from local session logs through ctx.sessionQuery.">Lovenndme/dsh-profile-stats</span><span class="tag" title="Deterministic replay that finds expensive-model-on-cheap-work waste.">bushizhanghan/dsh-routing-forensics</span></div></td></tr><tr><td><code>theme</code></td><td><b>Themes &amp; Appearance</b></td><td class="num">405</td><td class="num">181</td><td>L6</td><td>Token-level theming with preview, persistence, and import/export.</td><td><div class="tag-list"><span class="tag" title="Settings-integrated theme row with previews, persistence, and JSON import/export.">cherrchen/dsh-theme-studio</span><span class="tag" title="Independent opacity/blur controls across eight shell surfaces.">Tkingxiao/dsh-any-background</span><span class="tag" title="Uses shell tokens and a negative z-index layer, with a bundled fallback image.">1020252969/dsh-wallpaper</span></div></td></tr><tr><td><code>model</code></td><td><b>Models &amp; Providers</b></td><td class="num">562</td><td class="num">299</td><td>L2</td><td>Provider routing with failover, observability, and credential isolation.</td><td><div class="tag-list"><span class="tag" title="Virtual round-robin route with failover, retry, cooldown, and speed tests.">ArcaneOrion/dsh-model-channel-manager</span><span class="tag" title="OpenAI-compatible egress over configured models with named ordered groups.">Leafyezi233/dsh-model-gateway</span><span class="tag" title="In-turn retry with capped jittered backoff, server hints, and fallback.">good-saltfish/dsh-auto-rerun</span></div></td></tr><tr><td><code>identity</code></td><td><b>Identity &amp; Communication</b></td><td class="num">132</td><td class="num">71</td><td>L5</td><td>Identity and messaging that reuse native auth without leaking credentials.</td><td><div class="tag-list"><span class="tag" title="Zero-credential COM automation with 13 tools and a sidebar badge.">UnknowCao/dsh-outlook</span><span class="tag" title="Layered global/workspace/session prompt profiles with line-level override diffs.">elfmingh/dsh-prompt-manager</span><span class="tag" title="Reuses logged-in IM CLIs, polls only watched chats, and wakes the bound session.">buger-gif/cyber-im-avatar#dsh-plugin</span></div></td></tr><tr><td><code>session</code></td><td><b>Sessions &amp; Messages</b></td><td class="num">855</td><td class="num">435</td><td>L7</td><td>Context economics: deterministic folding, provenance, and recoverable history.</td><td><div class="tag-list"><span class="tag" title="Deterministic tool-output cards, tiered summaries, and a local decompression archive.">light-cheng/dsh-strata</span><span class="tag" title="Cross-session archive with lineage, search, summaries, export, and native embeds.">YeqingTang/dsh-session-flow</span><span class="tag" title="Resumes interrupted turns with backoff, cooldown, a cap, and boot-time scanning.">Frog755/dsh-client-auto-retry</span></div></td></tr><tr><td><code>memory</code></td><td><b>Memory</b></td><td class="num">478</td><td class="num">244</td><td>L7</td><td>Bounded, auditable memory with consent, conflict handling, and retrieval quality.</td><td><div class="tag-list"><span class="tag" title="Typed ctx.memory seam, SQLite provider, frozen snapshot, and approval-gated writes.">PerryLink/dsh-memento</span><span class="tag" title="Idle-time consolidation, conflict freezing, and a replayable audit trail.">slow-stack/mneme#dsh-mneme</span><span class="tag" title="Human-approved writes, an immutable audit log, and model-free FTS5/BM25 recall.">EternalNight996/memory-eternal</span></div></td></tr><tr><td><code>tools</code></td><td><b>Tools &amp; Capabilities</b></td><td class="num">1,528</td><td class="num">825</td><td>L3</td><td>Typed, cancellable tools with deferred schemas and policy-aware execution.</td><td><div class="tag-list"><span class="tag" title="Official Agent SDK delegation with 19 per-call controls and result return.">project-hy/dsh-claude-delegate</span><span class="tag" title="Deferred MCP tool schemas via ToolSearch: names only until a tool is needed.">Imzl-zl/dsh-toolbox-ui</span><span class="tag" title="Unified MCP/skill/expert board with scopes, schemas, and connection state.">2026heshao/dsh-armory</span></div></td></tr><tr><td><code>wsl</code></td><td><b>WSL &amp; Windows Interop</b></td><td class="num">88</td><td class="num">12</td><td>L3</td><td>Native platform bridging without breaking sandbox or write-root semantics.</td><td><div class="tag-list"><span class="tag" title="WSL distro discovery, UNC workspaces, and a real Linux PTY in the sidebar.">stallenlu/dsh-wsl-suite</span><span class="tag" title="Typed .wslconfig/wsl.conf editing plus long-running processes in any distro.">Wang1462604987/dsh-wsl-sidebar</span><span class="tag" title="WSL file tools plus an explicit one-off-command vs persistent-terminal choice.">XINY11451/dsh-wsl</span></div></td></tr><tr><td><code>browser</code></td><td><b>Browser &amp; Web</b></td><td class="num">219</td><td class="num">134</td><td>L3</td><td>Reusable browser providers with authenticated, loopback-only control.</td><td><div class="tag-list"><span class="tag" title="ctx.browser seam to a loopback CDP daemon with bearer auth and a path allowlist.">lyp88997/dsh-browser-service</span><span class="tag" title="Drives the user&#x27;s real Chrome, including same-origin iframes, over CDP.">OrderG-X/dsh-chrome-bridge#plugin</span><span class="tag" title="Tiered 28-engine union with keyless fallbacks and upstream consolidation.">drscrewdriver/dsh-union-search</span></div></td></tr><tr><td><code>vision</code></td><td><b>Vision &amp; Multimodal</b></td><td class="num">200</td><td class="num">100</td><td>L3</td><td>Modality adapters that keep evidence and degrade gracefully.</td><td><div class="tag-list"><span class="tag" title="Text-only-model vision path with OCR, UI reproduction, grounding, and pixel diff.">Anionex/dsh-vision-toolkit</span><span class="tag" title="Subtitle-first video sampling with chapters, frames, and AudioSet sound tagging.">cctv2333/dsh-vidlens</span><span class="tag" title="Per-channel model catalogs and per-family request shaping across providers.">q253595422/dsh-imagegen-video</span></div></td></tr><tr><td><code>voice</code></td><td><b>Voice &amp; Audio</b></td><td class="num">148</td><td class="num">81</td><td>L3</td><td>Local-first audio pipelines with explicit device and permission handling.</td><td><div class="tag-list"><span class="tag" title="Local transcription/diarization, notes, actions, exports, and review scoring.">kekydream/dsh-meeting-room</span><span class="tag" title="Zero-dependency, event-driven system TTS with no model or token cost.">Alan2Z/dsh-speak</span><span class="tag" title="Browser VAD, local ASR, and a floating call control surface.">biliye/dsh-voice-call</span></div></td></tr><tr><td><code>docs</code></td><td><b>Docs &amp; Rendering</b></td><td class="num">208</td><td class="num">113</td><td>L6</td><td>Source-grounded rendering with stable anchors and offline artifacts.</td><td><div class="tag-list"><span class="tag" title="Workspace document index ranked by conversation relevance, lexical-first.">PolinniZhong/dsh-knit</span><span class="tag" title="PDF library with page-anchored citations, select-to-ask, and a tutor preset.">GGboya/dsh-paper-reader</span><span class="tag" title="Validates md-report/1 and renders offline interactive HTML with SQLite/CSV data.">NoneFire/drender#dsh-drender-plugin</span></div></td></tr><tr><td><code>skill</code></td><td><b>Skills</b></td><td class="num">397</td><td class="num">167</td><td>L4</td><td>Progressive-disclosure skills with discovery, provenance, and evaluation.</td><td><div class="tag-list"><span class="tag" title="Ten domain skills + fifteen tools; 450 skills curated into 103 cards with a ledger.">xuzhecomeon/dsh-research-suite</span><span class="tag" title="Read-only inspector of observed skill loads and discoverability.">PolinniZhong/dsh-skill-intelligence</span><span class="tag" title="Ports fourteen composable engineering skills as native DSH skills.">LittleBlackTong/dsh-plugin-superpowers</span></div></td></tr><tr><td><code>workflow</code></td><td><b>Workflow &amp; Automation</b></td><td class="num">667</td><td class="num">368</td><td>L5</td><td>Durable orchestration with budgets, stop conditions, and verification gates.</td><td><div class="tag-list"><span class="tag" title="Task dispatch, optional Agent Teams, tiered verification, and context folding.">mrzturn/dsh-switchman</span><span class="tag" title="Eight role presets, four-wave DAG scheduling, concurrency slots, and PostgreSQL state.">ECCVIK/lmtagent</span><span class="tag" title="Persistent bots/rooms with per-bot model, permissions, workspace, and session.">Leo-sail/dsh-plugin-agent-collaboration#agent-collaboration</span></div></td></tr><tr><td><code>git</code></td><td><b>Git &amp; Code Review</b></td><td class="num">195</td><td class="num">104</td><td>L3</td><td>Review surfaces that make diffs, lineage, and approval auditable.</td><td><div class="tag-list"><span class="tag" title="Per-turn net-diff cards and a syntax-highlighted review tab with open-at-line.">Binaryinject/dsh-review-checkout</span><span class="tag" title="Collects edit/write changes and supports block/file keep-or-revert review.">9087/dsh-diff-approval</span><span class="tag" title="Git workbench with OAuth/PAT and per-repository permissions.">zjj1769404838/dsh-git-panel</span></div></td></tr><tr><td><code>notify</code></td><td><b>Notifications &amp; Integrations</b></td><td class="num">369</td><td class="num">185</td><td>L5</td><td>Event-driven outbound channels with resumable sessions and consent.</td><td><div class="tag-list"><span class="tag" title="System toast, per-kind chime, and tab marker for approval/question/background events.">Leo-Cjw/dsh-pharos</span><span class="tag" title="Bridges sessions to Feishu/Telegram/DingTalk with streaming cards and task metrics.">IvanWu2015/dsh-connect#connect</span><span class="tag" title="Mail client with sandboxed HTML and remote images blocked by default.">HughPython/dsh-tc-mail</span></div></td></tr><tr><td><code>dev</code></td><td><b>Development &amp; Runtime</b></td><td class="num">632</td><td class="num">337</td><td>L1</td><td>Install-time diagnostics, drift detection, and reversible operations.</td><td><div class="tag-list"><span class="tag" title="Backup/restore/migration with sha256 verification, retention, and auto-rollback.">xiaoyuyu6420/dsh-backup</span><span class="tag" title="Read-only install diagnostics: boot crash, config drift, backup freshness, compatibility.">stallenlu/dsh-steward</span><span class="tag" title="Capability graph comparing the running Loader with on-disk patch layers.">ven314/dsh-conflict-doctor</span></div></td></tr><tr><td><code>security</code></td><td><b>Security &amp; Permissions</b></td><td class="num">286</td><td class="num">155</td><td>L8</td><td>Fail-closed policy, least privilege, and disclosure of plugin capability.</td><td><div class="tag-list"><span class="tag" title="Covers pages, /api, /plugins, and WebSocket upgrades with PBKDF2 and HttpOnly cookies.">0QwQ0/dsh-ui-auth</span><span class="tag" title="Policy at tools/pre-execute: deny high-risk, escalate ambiguous, auto-approve reversible.">AskTheWay/dsh-jev-interceptor</span><span class="tag" title="Static disclosure of capabilities, destinations, install scripts, and injection shapes.">liuwenji007/dsh-trust-check</span></div></td></tr><tr><td><code>remote</code></td><td><b>Remote &amp; Mobile</b></td><td class="num">322</td><td class="num">179</td><td>L6</td><td>Authenticated narrow surfaces, not broad exposure of the local GUI.</td><td><div class="tag-list"><span class="tag" title="Fifteen channel adapters across twelve platforms behind one bridge.">drscrewdriver/dsh-im-union</span><span class="tag" title="PWA for sessions, jobs, subagents, goals, workflows, and approvals with stop control.">dingchenhui0618-arch/dsh-in-hand</span><span class="tag" title="47 REST+SSE routes for workspaces, sessions, models, presets, and settings.">toddpan/dsh-webapi</span></div></td></tr><tr><td><code>market</code></td><td><b>Plugin Markets &amp; Managers</b></td><td class="num">145</td><td class="num">75</td><td>L9</td><td>Index-driven discovery with verification, provenance, and safe install.</td><td><div class="tag-list"><span class="tag" title="Third-party index integration with sandbox install verdicts and risk levels.">moldkey/dsh-deepseekbase</span><span class="tag" title="Refreshed GitHub topic catalog with pre-install review and five-dimension scoring.">hoyyang/dsh-mall</span><span class="tag" title="Profile/skill snapshot and replay-evidence-gated recovery.">tangyixiao/dsh-version-manager</span></div></td></tr><tr><td><code>fun</code></td><td><b>Just for Fun</b></td><td class="num">363</td><td class="num">162</td><td>L6</td><td>Event-derived state machines that stay decoupled from rendering.</td><td><div class="tag-list"><span class="tag" title="Connector-only event fold into twelve work phases; rendering stays separate.">xkk6663/dsh-live2d-mao#dsh-live2d-mao</span><span class="tag" title="Achievements derived only from real session events, expandable to evidence.">dingchenhui0618-arch/dsh-pet-ledger</span><span class="tag" title="Hand-written SVG/CSS with zero runtime deps and state-driven animation.">zyfgood/dsh-whale-girl</span></div></td></tr></tbody></table></div>
+  </section>
+
+  <section id="sota-stack">
+    <div class="section-head"><h2>Skills, tools, automation</h2><p>the layers where workflow is composed</p></div>
+    <div class="sota-grid"><div class="sota-card"><div class="layer-id">L4 &middot; Progressive-disclosure skills with discovery, provenance, and evaluation.</div><h3>Skills and instructions</h3><p>One job per skill; a discriminating trigger; progressive disclosure; evaluated behavior.</p><div class="layer-metrics"><span><b>397</b> entries</span><span><b>167</b> npm</span></div><div class="tag-list"><span class="tag" title="Ten domain skills + fifteen tools; 450 skills curated into 103 cards with a ledger.">xuzhecomeon/dsh-research-suite</span><span class="tag" title="Read-only inspector of observed skill loads and discoverability.">PolinniZhong/dsh-skill-intelligence</span><span class="tag" title="Ports fourteen composable engineering skills as native DSH skills.">LittleBlackTong/dsh-plugin-superpowers</span></div></div><div class="sota-card"><div class="layer-id">L3 &middot; Typed, cancellable tools with deferred schemas and policy-aware execution.</div><h3>Tools and capabilities</h3><p>Typed schemas; policy; cancellation; bounded output; deferred schemas for context economy.</p><div class="layer-metrics"><span><b>1,528</b> entries</span><span><b>825</b> npm</span></div><div class="tag-list"><span class="tag" title="Official Agent SDK delegation with 19 per-call controls and result return.">project-hy/dsh-claude-delegate</span><span class="tag" title="Deferred MCP tool schemas via ToolSearch: names only until a tool is needed.">Imzl-zl/dsh-toolbox-ui</span><span class="tag" title="Unified MCP/skill/expert board with scopes, schemas, and connection state.">2026heshao/dsh-armory</span></div></div><div class="sota-card"><div class="layer-id">L5 &middot; Durable orchestration with budgets, stop conditions, and verification gates.</div><h3>Workflow and automation</h3><p>Declarative presets; least privilege; budgets; disposed subagents; verification gates.</p><div class="layer-metrics"><span><b>667</b> entries</span><span><b>368</b> npm</span></div><div class="tag-list"><span class="tag" title="Task dispatch, optional Agent Teams, tiered verification, and context folding.">mrzturn/dsh-switchman</span><span class="tag" title="Eight role presets, four-wave DAG scheduling, concurrency slots, and PostgreSQL state.">ECCVIK/lmtagent</span><span class="tag" title="Persistent bots/rooms with per-bot model, permissions, workspace, and session.">Leo-sail/dsh-plugin-agent-collaboration#agent-collaboration</span></div></div><div class="sota-card"><div class="layer-id">L7 &middot; Bounded, auditable memory with consent, conflict handling, and retrieval quality.</div><h3>Memory and sessions</h3><p>Bounded memory; log-visible inputs; pure projections; export and delete.</p><div class="layer-metrics"><span><b>478</b> entries</span><span><b>244</b> npm</span></div><div class="tag-list"><span class="tag" title="Typed ctx.memory seam, SQLite provider, frozen snapshot, and approval-gated writes.">PerryLink/dsh-memento</span><span class="tag" title="Idle-time consolidation, conflict freezing, and a replayable audit trail.">slow-stack/mneme#dsh-mneme</span><span class="tag" title="Human-approved writes, an immutable audit log, and model-free FTS5/BM25 recall.">EternalNight996/memory-eternal</span></div></div><div class="sota-card"><div class="layer-id">L8 &middot; Fail-closed policy, least privilege, and disclosure of plugin capability.</div><h3>Security and permissions</h3><p>Source before install; least privilege; auth every path; fail closed; audit.</p><div class="layer-metrics"><span><b>286</b> entries</span><span><b>155</b> npm</span></div><div class="tag-list"><span class="tag" title="Covers pages, /api, /plugins, and WebSocket upgrades with PBKDF2 and HttpOnly cookies.">0QwQ0/dsh-ui-auth</span><span class="tag" title="Policy at tools/pre-execute: deny high-risk, escalate ambiguous, auto-approve reversible.">AskTheWay/dsh-jev-interceptor</span><span class="tag" title="Static disclosure of capabilities, destinations, install scripts, and injection shapes.">liuwenji007/dsh-trust-check</span></div></div><div class="sota-card"><div class="layer-id">L2 &middot; Provider routing with failover, observability, and credential isolation.</div><h3>Models and providers</h3><p>Provider seam; failover; cooldown; credential isolation; observable routing.</p><div class="layer-metrics"><span><b>562</b> entries</span><span><b>299</b> npm</span></div><div class="tag-list"><span class="tag" title="Virtual round-robin route with failover, retry, cooldown, and speed tests.">ArcaneOrion/dsh-model-channel-manager</span><span class="tag" title="OpenAI-compatible egress over configured models with named ordered groups.">Leafyezi233/dsh-model-gateway</span><span class="tag" title="In-turn retry with capped jittered backoff, server hints, and fallback.">good-saltfish/dsh-auto-rerun</span></div></div></div>
+  </section>
+
+  <section id="layers">
+    <div class="section-head"><h2>Ten layers</h2><p>where plugin behavior belongs</p></div>
+    <div class="layer-grid"><div class="layer-card"><div class="layer-id">L0 &middot; profile, bundle, manifest, install</div><h3>Distribution &amp; Composition</h3><p class="sota-line">Patch as API; engines.dsh; built artifacts; reversible install.</p><div class="layer-metrics"><span><b>0</b> primary</span><span><b>2,304</b> mentions</span></div><div class="layer-detail"><span>Categories</span><b>cross-cutting</b></div><div class="layer-detail"><span>Anchors</span><b>PerryLink/dsh-doublecheck, PerryLink/dsh-memento, tangyixiao/dsh-version-manager</b></div></div><div class="layer-card"><div class="layer-id">L1 &middot; Cordis plugin, inject, effects, HMR</div><h3>Host Runtime &amp; Lifecycle</h3><p class="sota-line">Explicit inject; reversible effects; HMR-safe; clean unload.</p><div class="layer-metrics"><span><b>632</b> primary</span><span><b>2,797</b> mentions</span></div><div class="layer-detail"><span>Categories</span><b>Development &amp; Runtime (632)</b></div><div class="layer-detail"><span>Anchors</span><b>FenrirCait/dsh-fail-guard, omdsh-dev/dsh-advisor, PerryLink/dsh-memento</b></div></div><div class="layer-card"><div class="layer-id">L2 &middot; service definition/provider/consumer</div><h3>Capability Seams &amp; Services</h3><p class="sota-line">Definition/provider/consumer; scoped ownership; swap one row.</p><div class="layer-metrics"><span><b>562</b> primary</span><span><b>2,650</b> mentions</span></div><div class="layer-detail"><span>Categories</span><b>Models &amp; Providers (562)</b></div><div class="layer-detail"><span>Anchors</span><b>lyp88997/dsh-browser-service, ArcaneOrion/dsh-model-channel-manager, PerryLink/dsh-memento</b></div></div><div class="layer-card"><div class="layer-id">L3 &middot; tools, schemas, execution policy</div><h3>Tools &amp; Model-Facing Context</h3><p class="sota-line">Typed schema; policy; cancellation; bounded output; context budget.</p><div class="layer-metrics"><span><b>2,378</b> primary</span><span><b>6,959</b> mentions</span></div><div class="layer-detail"><span>Categories</span><b>Tools &amp; Capabilities (1,528), Browser &amp; Web (219), Vision &amp; Multimodal (200)</b></div><div class="layer-detail"><span>Anchors</span><b>project-hy/dsh-claude-delegate, Imzl-zl/dsh-toolbox-ui, 2026heshao/dsh-armory</b></div></div><div class="layer-card"><div class="layer-id">L4 &middot; skill providers, progressive disclosure</div><h3>Skills &amp; Agent Instructions</h3><p class="sota-line">One job per skill; discriminating trigger; progressive disclosure; evaluated.</p><div class="layer-metrics"><span><b>397</b> primary</span><span><b>891</b> mentions</span></div><div class="layer-detail"><span>Categories</span><b>Skills (397)</b></div><div class="layer-detail"><span>Anchors</span><b>xuzhecomeon/dsh-research-suite, PolinniZhong/dsh-skill-intelligence, LittleBlackTong/dsh-plugin-superpowers</b></div></div><div class="layer-card"><div class="layer-id">L5 &middot; presets, hooks, subagents, goals</div><h3>Agent Composition &amp; Orchestration</h3><p class="sota-line">Declarative presets; least privilege; budgets; disposed subagents.</p><div class="layer-metrics"><span><b>1,250</b> primary</span><span><b>3,297</b> mentions</span></div><div class="layer-detail"><span>Categories</span><b>Workflow &amp; Automation (667), Notifications &amp; Integrations (369), Identity &amp; Communication (132)</b></div><div class="layer-detail"><span>Anchors</span><b>dsh-proactive, mrzturn/dsh-switchman, ECCVIK/lmtagent</b></div></div><div class="layer-card"><div class="layer-id">L6 &middot; client plugin, slots, nodes, resources</div><h3>Client UI &amp; Experience</h3><p class="sota-line">Slots and nodes; durable/live split; states; accessibility; i18n; tokens.</p><div class="layer-metrics"><span><b>4,128</b> primary</span><span><b>7,586</b> mentions</span></div><div class="layer-detail"><span>Categories</span><b>UI Enhancements (2,232), Usage &amp; Billing (598), Themes &amp; Appearance (405)</b></div><div class="layer-detail"><span>Anchors</span><b>OrderG-X/dsh-design-studio, baitouwuya/dsh-super-cards, cherrchen/dsh-theme-studio</b></div></div><div class="layer-card"><div class="layer-id">L7 &middot; events, projections, storage, migration</div><h3>Data, Sessions &amp; Persistence</h3><p class="sota-line">Log model-visible inputs; pure projections; versioned migrations; export/delete.</p><div class="layer-metrics"><span><b>1,333</b> primary</span><span><b>4,378</b> mentions</span></div><div class="layer-detail"><span>Categories</span><b>Sessions &amp; Messages (855), Memory (478)</b></div><div class="layer-detail"><span>Anchors</span><b>light-cheng/dsh-strata, YeqingTang/dsh-session-flow, xiaoyuyu6420/dsh-backup</b></div></div><div class="layer-card"><div class="layer-id">L8 &middot; sandbox, approval, auth, provenance</div><h3>Security, Privacy &amp; Supply Chain</h3><p class="sota-line">Source before install; least privilege; auth every path; fail closed.</p><div class="layer-metrics"><span><b>286</b> primary</span><span><b>2,426</b> mentions</span></div><div class="layer-detail"><span>Categories</span><b>Security &amp; Permissions (286)</b></div><div class="layer-detail"><span>Anchors</span><b>0QwQ0/dsh-ui-auth, AskTheWay/dsh-jev-interceptor, liuwenji007/dsh-trust-check</b></div></div><div class="layer-card"><div class="layer-id">L9 &middot; index, install, update, observability</div><h3>Operations, Market &amp; Ecosystem</h3><p class="sota-line">Built packages; verified indexes; snapshot/rollback; consent and retirement.</p><div class="layer-metrics"><span><b>145</b> primary</span><span><b>145</b> mentions</span></div><div class="layer-detail"><span>Categories</span><b>Plugin Markets &amp; Managers (145)</b></div><div class="layer-detail"><span>Anchors</span><b>moldkey/dsh-deepseekbase, hoyyang/dsh-mall, tangyixiao/dsh-version-manager</b></div></div></div>
+  </section>
+
+  <section id="invariants">
+    <div class="section-head"><h2>Invariant classes</h2><p>hard failures versus legitimate variation</p></div>
+    <div class="two-col">
+      <div class="panel hard">
+        <h3>Hard failures</h3>
+        <ul>
+          <li>Catalog length equals stats.totals.entries.</li>
+          <li>Every stats total, category count, and layer count is recomputed from the catalog.</li>
+          <li>Category counts sum to the catalog total; IDs are unique.</li>
+          <li>23 categories; 3 exemplars each; 30 anchors, exactly 3 per layer.</li>
+          <li>36 prose anchors equal the set extracted from layer-model.md.</li>
+          <li>Index ledger holds: index packages = unique matched npm packages + index-only.</li>
+          <li>Report, layers, landscape, coverage, and architecture agree with stats.</li>
+          <li>Local deliverable links resolve.</li>
+        </ul>
+      </div>
+      <div class="panel warn">
+        <h3>Warnings, not failures</h3>
+        <ul>
+          <li>Duplicate titles: IDs remain unique.</li>
+          <li>Install specs on GitHub-only entries.</li>
+          <li>Multiple entries sharing one npm package.</li>
+          <li>Install/npm presence differences.</li>
+        </ul>
+        <p class="note">These reflect legitimate upstream variation. The warning tests prove they exit 0 with WARN lines.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="validation">
+    <div class="section-head"><h2>Validation</h2><p>fresh checks, not adjectives</p></div>
+    <div class="check-grid"><div class="check"><b>Catalog</b><span>11,111 entries</span><span>README + npm index, 23 categories</span></div><div class="check"><b>Anchor validator</b><span>30/30 exact</span><span>3 per layer, 36/36 prose anchors</span></div><div class="check"><b>Negative tests</b><span>failure paths proven</span><span>4/2 split, report table, extra and missing prose fail</span></div><div class="check"><b>Warning tests</b><span>WARN, exit 0</span><span>duplicate title, install-only, shared npm package</span></div><div class="check"><b>Doc drift tests</b><span>stale values fail</span><span>distribution block, layer row, match rate; unrelated decimal ignored</span></div><div class="check"><b>Doc validator</b><span>23/23 + 10/10</span><span>report 23/23, layers 10/10, landscape 23/23, architecture contract</span></div><div class="check"><b>Theme validator</b><span>light + print</span><span>tag and code contrast, light sota-card, screen and print</span></div></div>
+  </section>
+
+  <section id="links">
+    <div class="section-head"><h2>Source artifacts</h2><p>open the underlying files</p></div>
+    <ul class="links"><li><a href="README.md">Landscape report</a><small>findings, coverage map, layers, limits</small></li><li><a href="coverage.md">Coverage appendix</a><small>generated totals and index-only ledger</small></li><li><a href="VALIDATION.md">Validation record</a><small>evidence, invariant policy, uncovered scope</small></li><li><a href="../../.dsh/skills/dsh-plugin-sota/references/architecture.md">Architecture manifest (Markdown)</a><small>graphs, components, hard versus warning invariants</small></li><li><a href="ADR-0001-final-architecture.md">Architecture ADR</a><small>accepted decision, exact counts, revisit triggers</small></li><li><a href="INSTALL.md">Install guide</a><small>copy, prerequisites, offline validation, other machines</small></li><li><a href="AGENTS.global.md">Global routing</a><small>user-global routing for every workspace</small></li><li><a href="../../.dsh/skills/dsh-plugin-sota/SKILL.md">Skill entrypoint</a><small>routing, default path, output contract</small></li><li><a href="../../.dsh/skills/dsh-plugin-sota/references/landscape.md">Full landscape reference</a><small>23 categories, exemplars, signals, questions</small></li><li><a href="../../.dsh/skills/dsh-plugin-sota/scripts/validate-docs.mjs">Doc validator</a><small>report, layers, landscape, coverage, architecture</small></li><li><a href="https://github.com/awesome-dsh-plugin/awesome-dsh-plugin">Upstream list</a><small>the source catalog</small></li></ul>
+  </section>
+</main>
+<footer class="wrap">
+  <p><b>DSH Plugin Landscape</b> — final architecture manifest. Snapshot 2026-11-14 20:37:26.554 UTC. This is full catalog and index accounting, not a source-level security review. No third-party plugin was installed or executed.</p>
+  <p>Generated from data/stats.json by scripts/build-html.py. Source list: <a href="https://github.com/awesome-dsh-plugin/awesome-dsh-plugin">awesome-dsh-plugin</a>.</p>
+</footer>
+</body>
+</html>

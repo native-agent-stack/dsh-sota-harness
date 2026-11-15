@@ -1,0 +1,17 @@
+{
+  "name": "fixture.echo",
+  "description": "Returns the provided text; no side effects.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "text": {
+        "type": "string",
+        "maxLength": 2000
+      }
+    },
+    "required": [
+      "text"
+    ],
+    "additionalProperties": false
+  }
+}

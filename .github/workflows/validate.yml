@@ -1,0 +1,66 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: harness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Harness probes
+        run: node harness/run.mjs
+
+      - name: Session brief
+        run: node .dsh/skills/dsh-plugin-sota/scripts/session-brief.mjs
+
+      - name: Brief failure paths
+        run: node .dsh/skills/dsh-plugin-sota/scripts/test-brief.mjs
+
+      - name: Offline catalog guard
+        run: node .dsh/skills/dsh-plugin-sota/scripts/test-catalog-offline.mjs
+
+      - name: Anchors
+        run: node .dsh/skills/dsh-plugin-sota/scripts/validate-anchors.mjs
+
+      - name: Anchor negative tests
+        run: node .dsh/skills/dsh-plugin-sota/scripts/test-anchors.mjs
+
+      - name: Warning invariants
+        run: node .dsh/skills/dsh-plugin-sota/scripts/test-warnings.mjs
+
+      - name: Doc drift
+        run: node .dsh/skills/dsh-plugin-sota/scripts/test-docs.mjs
+
+      - name: HTML current
+        run: python3 .dsh/skills/dsh-plugin-sota/scripts/build-html.py --check
+
+      - name: Docs validator
+        run: node .dsh/skills/dsh-plugin-sota/scripts/validate-docs.mjs
+
+      - name: Theme check (optional)
+        run: |
+          CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"
+          if [ -n "$CHROME_BIN" ]; then
+            DSH_CHROME="$CHROME_BIN" node .dsh/skills/dsh-plugin-sota/scripts/validate-themes.mjs --require
+          else
+            echo "Chrome/Chromium not present; theme check skipped."
+          fi

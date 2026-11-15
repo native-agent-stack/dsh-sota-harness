@@ -1,0 +1,7 @@
+{
+  "id": "l8-install-policy",
+  "layer": "L8",
+  "title": "Fail-closed install policy",
+  "anchor": "0QwQ0/dsh-ui-auth",
+  "fixture": "harness/fixtures/l8-install"
+}

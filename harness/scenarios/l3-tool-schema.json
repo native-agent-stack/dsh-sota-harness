@@ -1,0 +1,7 @@
+{
+  "id": "l3-tool-schema",
+  "layer": "L3",
+  "title": "Typed, policy-aware tool",
+  "anchor": "project-hy/dsh-claude-delegate",
+  "fixture": "harness/fixtures/l3-tool"
+}

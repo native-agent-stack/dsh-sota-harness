@@ -1,0 +1,301 @@
+{
+  "agi": {
+    "signals": [
+      "Durable state with an explicit evidence trail.",
+      "Bounded autonomy: budgets, stop conditions, and a human-visible terminal state.",
+      "Auditable evolution with baseline, rollback, and a measurable objective."
+    ],
+    "questions": [
+      "Where is state stored, and can it be replayed?",
+      "What stops a runaway loop or an unbounded self-modification?",
+      "Can a human inspect, approve, and roll back a change?"
+    ],
+    "pitfall": "Self-evolution without a baseline, a budget, or a rollback path is an uncontrolled mutation, not progress."
+  },
+  "ui": {
+    "signals": [
+      "Composition through slots, nodes, resources, and settings cards.",
+      "A clean split between durable session records and transient stream frames.",
+      "Explicit loading, empty, error, keyboard, narrow-screen, theme, and locale states."
+    ],
+    "questions": [
+      "Does it extend a documented slot or fork the shell?",
+      "Does it behave when the plugin is unloaded or the network is slow?",
+      "Is it keyboard-operable and readable in both themes?"
+    ],
+    "pitfall": "DOM hacks, hardcoded colors, and untranslated strings break on the next shell release."
+  },
+  "usage": {
+    "signals": [
+      "Accounting folded from the session log rather than a parallel counter.",
+      "Cache classes, pricing, and the billing instant made explicit.",
+      "Per-session, per-turn, and per-model views that a user can verify."
+    ],
+    "questions": [
+      "Where does each number come from?",
+      "Are cache reads/writes and peak/off-peak prices labeled?",
+      "Can a user trace a cost back to one turn?"
+    ],
+    "pitfall": "A dashboard that presents an estimate as a bill without saying so."
+  },
+  "theme": {
+    "signals": [
+      "Changes expressed through theme tokens, not global CSS overrides.",
+      "Preview and persistence separated; apply is explicit.",
+      "Import/export and light/dark coverage."
+    ],
+    "questions": [
+      "Does it use the official theme tokens?",
+      "Does hover preview write anything before the user applies?",
+      "Does it survive reload and the other theme?"
+    ],
+    "pitfall": "Global selectors that leak into unrelated surfaces and break after an upstream class rename."
+  },
+  "model": {
+    "signals": [
+      "Provider adapter behind the official LLM seam.",
+      "Explicit failover, retry, cooldown, and timeout policy.",
+      "Credential isolation and observable request outcomes."
+    ],
+    "questions": [
+      "Does it register an adapter rather than patch the loop?",
+      "Where do credentials live, and do they reach logs?",
+      "What happens on 429, 5xx, timeout, and cancellation?"
+    ],
+    "pitfall": "Silently switching models or spending a subscription quota without consent."
+  },
+  "identity": {
+    "signals": [
+      "Reuse of the native auth/client instead of copying cookies.",
+      "Explicit binding between an external identity and one session.",
+      "Message provenance and least data retention."
+    ],
+    "questions": [
+      "What identity does it assume on the user's behalf?",
+      "Where are tokens stored, and how are they scoped?",
+      "Can a message be traced to the exact session and sender?"
+    ],
+    "pitfall": "Driving a logged-in client or scraping cookies without disclosure and a revocation path."
+  },
+  "session": {
+    "signals": [
+      "Views reconstructed from the append-only session log.",
+      "Context folding with provenance and a way back to the original.",
+      "Recovery of interrupted turns and cross-session lineage."
+    ],
+    "questions": [
+      "Is the view reconstructable from the log alone?",
+      "What is folded away, and can it be decompressed?",
+      "Can it recover an interrupted turn without duplicating work?"
+    ],
+    "pitfall": "A second history store that slowly disagrees with the session log."
+  },
+  "memory": {
+    "signals": [
+      "Bounded, layered storage with an explicit retention policy.",
+      "Consent, approval, and an audit trail for writes.",
+      "Conflict handling, staleness checks, and measured recall quality."
+    ],
+    "questions": [
+      "What is stored, where, and for how long?",
+      "Who approves a write, and can a memory be corrected or forgotten?",
+      "How are conflicts, duplicates, and stale facts handled?"
+    ],
+    "pitfall": "Unbounded memory injection that quietly consumes the context window."
+  },
+  "tools": {
+    "signals": [
+      "Typed, narrow schemas with discriminative descriptions.",
+      "Policy, cancellation, bounded output, and structured errors.",
+      "Deferred schemas for large capability sets."
+    ],
+    "questions": [
+      "What can this tool do that the model should not?",
+      "Is the output bounded, and does it respect abort?",
+      "Is the schema worth its per-request token cost?"
+    ],
+    "pitfall": "A do-anything tool with an unvalidated string and no policy layer."
+  },
+  "wsl": {
+    "signals": [
+      "Native path, PTY, and executor semantics.",
+      "An explicit choice between one-off command and persistent terminal.",
+      "Awareness of workspace, write roots, and sandbox boundaries."
+    ],
+    "questions": [
+      "Does it preserve the workspace and write-root contract?",
+      "Does it leak host paths into the Linux side?",
+      "What happens when the distro or command is missing?"
+    ],
+    "pitfall": "Bridging by copying files or escaping the sandbox instead of using the executor seam."
+  },
+  "browser": {
+    "signals": [
+      "A reusable provider behind the browser seam.",
+      "Authenticated, loopback-only control with per-origin scope.",
+      "Evidence capture and a clear user-consent boundary."
+    ],
+    "questions": [
+      "Does it control a browser the user owns or a disposable one?",
+      "Is the control endpoint authenticated and bound to loopback?",
+      "Can it read cookies, credentials, or other origins?"
+    ],
+    "pitfall": "Exposing a CDP port to the LAN or reusing a logged-in session without consent."
+  },
+  "vision": {
+    "signals": [
+      "A modality adapter with a clear model and cost path.",
+      "Evidence and grounding retained alongside the answer.",
+      "Graceful degradation when the provider fails."
+    ],
+    "questions": [
+      "Which model actually sees the image?",
+      "Is the image sent off-machine, and is that disclosed?",
+      "What is retained, and what happens on failure?"
+    ],
+    "pitfall": "Silently uploading private images to a third-party endpoint."
+  },
+  "voice": {
+    "signals": [
+      "Local-first processing where possible.",
+      "Explicit device, microphone, and storage permissions.",
+      "Event-driven playback with a mute and an interrupt path."
+    ],
+    "questions": [
+      "Where is audio processed and stored?",
+      "What permission does it request, and when?",
+      "Can the user mute, interrupt, or delete a recording?"
+    ],
+    "pitfall": "Always-on recording or cloud transcription without disclosure."
+  },
+  "docs": {
+    "signals": [
+      "Source-grounded rendering with stable anchors.",
+      "Citations that resolve to a file, line, page, or passage.",
+      "Offline artifacts and deterministic re-render."
+    ],
+    "questions": [
+      "Can a claim be traced to a source location?",
+      "Do anchors survive an edit or a re-render?",
+      "Does it work offline and without a remote service?"
+    ],
+    "pitfall": "Rendering model output as authoritative without source anchors."
+  },
+  "skill": {
+    "signals": [
+      "Progressive disclosure with a discriminating description.",
+      "Discovery, provenance, invocation policy, and evaluation.",
+      "Resources and scripts that resolve and self-check."
+    ],
+    "questions": [
+      "When does it load, and what is the near-miss that should not?",
+      "Are references and resources reachable from the trigger?",
+      "Has the trigger behavior been evaluated?"
+    ],
+    "pitfall": "A megaskill that loads everywhere and gives no specific decision."
+  },
+  "workflow": {
+    "signals": [
+      "Durable orchestration state and explicit ownership.",
+      "Budgets, deadlines, stop conditions, and cancellation.",
+      "Verification gates and observable progress."
+    ],
+    "questions": [
+      "Where is the workflow state, and what happens on restart?",
+      "What stops it, and who can cancel it?",
+      "How is completion verified rather than asserted?"
+    ],
+    "pitfall": "A multi-agent loop with no budget, no owner, and no stop condition."
+  },
+  "git": {
+    "signals": [
+      "A reviewable net diff with stable line references.",
+      "Block-level keep/revert and an explicit approval boundary.",
+      "Lineage from turn to file change."
+    ],
+    "questions": [
+      "Does it show the net diff or a noisy intermediate?",
+      "Can a user keep or revert one block?",
+      "Does it commit or push without an explicit approval?"
+    ],
+    "pitfall": "Auto-commit or auto-push with a model-generated message and no review."
+  },
+  "notify": {
+    "signals": [
+      "Event-driven delivery with a resumable session binding.",
+      "Consent, quiet hours, and per-channel scoping.",
+      "Delivery metrics and a reply path back to the right session."
+    ],
+    "questions": [
+      "Which events trigger a notification?",
+      "Can the user mute it, and does a reply route correctly?",
+      "What content leaves the machine, and to whom?"
+    ],
+    "pitfall": "Notification spam or a bridge that leaks session content to a third party."
+  },
+  "dev": {
+    "signals": [
+      "Read-only diagnostics before any mutation.",
+      "Drift detection between running and on-disk state.",
+      "Reversible backup, restore, and compatibility checks."
+    ],
+    "questions": [
+      "Does it modify the profile or config?",
+      "Can it restore the prior state?",
+      "What does it read, and does it work offline?"
+    ],
+    "pitfall": "A doctor that rewrites config without a backup or a dry-run."
+  },
+  "security": {
+    "signals": [
+      "Fail-closed enforcement at a documented seam.",
+      "Route and WebSocket authentication, not just a login page.",
+      "Least privilege, audit, and capability disclosure."
+    ],
+    "questions": [
+      "What is the trust boundary, and what is outside it?",
+      "Is every route and upgrade authenticated?",
+      "Can a child agent or a retry bypass the policy?"
+    ],
+    "pitfall": "Security theater: a prompt-only guard with no enforcement at the execution boundary."
+  },
+  "remote": {
+    "signals": [
+      "A narrow, authenticated surface rather than the full GUI.",
+      "Pairing, per-device scope, and revocation.",
+      "Stop control and a clear blast radius."
+    ],
+    "questions": [
+      "What exactly is exposed to the network?",
+      "Is it authenticated, encrypted, and revocable?",
+      "What can a stolen token do?"
+    ],
+    "pitfall": "Binding the full local GUI to 0.0.0.0 with no auth."
+  },
+  "market": {
+    "signals": [
+      "A known index with provenance and refresh semantics.",
+      "Install verification, compatibility checks, and safe defaults.",
+      "Snapshot and rollback for updates."
+    ],
+    "questions": [
+      "Where does the index come from, and how fresh is it?",
+      "Does it verify the package and the running host?",
+      "Can it roll back a bad update?"
+    ],
+    "pitfall": "A marketplace that installs unverified code or silently auto-updates."
+  },
+  "fun": {
+    "signals": [
+      "State derived from real session events.",
+      "Rendering decoupled from the event connector.",
+      "Bounded polling, no context injection, and an off switch."
+    ],
+    "questions": [
+      "Which events drive the behavior?",
+      "Does it block or slow the UI?",
+      "Does it store data or inject context into every turn?"
+    ],
+    "pitfall": "A pet that polls aggressively or adds tokens to every request."
+  }
+}

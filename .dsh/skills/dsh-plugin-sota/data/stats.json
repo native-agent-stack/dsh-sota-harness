@@ -1,0 +1,1075 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-14T20:37:26.554Z",
+  "sources": {
+    "readme": "https://raw.githubusercontent.com/awesome-dsh-plugin/awesome-dsh-plugin/main/README.md",
+    "index": "https://cdn.jsdelivr.net/npm/dsh-plugin-catalog/index.json"
+  },
+  "totals": {
+    "entries": 11111,
+    "npmIndexed": 5635,
+    "uniqueNpmNames": 5635,
+    "githubOnly": 5476,
+    "npmMatchRate": 50.7,
+    "categories": 23,
+    "layers": 10,
+    "withInstallCommand": 5635,
+    "uniqueTitles": 11111
+  },
+  "categories": [
+    {
+      "key": "agi",
+      "title": "AGI Architecture Exploration",
+      "titleZh": "AGI 架构探索",
+      "layer": "L5",
+      "secondary": [
+        "L2",
+        "L7"
+      ],
+      "count": 82,
+      "npmCount": 45,
+      "exemplars": [
+        "gh:kenz1117/dsh-engram",
+        "gh:john-walks-slow/dsh-proactive/tree/main/packages/dsh-proactive",
+        "gh:ddl095/dsh-moa-native"
+      ]
+    },
+    {
+      "key": "ui",
+      "title": "UI Enhancements",
+      "titleZh": "UI 增强",
+      "layer": "L6",
+      "secondary": [
+        "L3"
+      ],
+      "count": 2232,
+      "npmCount": 1078,
+      "exemplars": [
+        "gh:orderg-x/dsh-design-studio",
+        "gh:baitouwuya/dsh-super-cards",
+        "gh:cheesefox259/dsh-better-composer"
+      ]
+    },
+    {
+      "key": "usage",
+      "title": "Usage & Billing",
+      "titleZh": "用量与计费",
+      "layer": "L6",
+      "secondary": [
+        "L7"
+      ],
+      "count": 598,
+      "npmCount": 285,
+      "exemplars": [
+        "gh:shallbay/dsh-token-stats",
+        "gh:lovenndme/dsh-profile-stats",
+        "gh:bushizhanghan/dsh-routing-forensics"
+      ]
+    },
+    {
+      "key": "theme",
+      "title": "Themes & Appearance",
+      "titleZh": "主题与外观",
+      "layer": "L6",
+      "secondary": [],
+      "count": 405,
+      "npmCount": 181,
+      "exemplars": [
+        "gh:cherrchen/dsh-theme-studio",
+        "gh:tkingxiao/dsh-any-background",
+        "gh:1020252969/dsh-wallpaper"
+      ]
+    },
+    {
+      "key": "model",
+      "title": "Models & Providers",
+      "titleZh": "模型与账号接入",
+      "layer": "L2",
+      "secondary": [
+        "L8"
+      ],
+      "count": 562,
+      "npmCount": 299,
+      "exemplars": [
+        "gh:arcaneorion/dsh-model-channel-manager",
+        "gh:leafyezi233/dsh-model-gateway",
+        "gh:good-saltfish/dsh-auto-rerun"
+      ]
+    },
+    {
+      "key": "identity",
+      "title": "Identity & Communication",
+      "titleZh": "身份与通信",
+      "layer": "L5",
+      "secondary": [
+        "L4"
+      ],
+      "count": 132,
+      "npmCount": 71,
+      "exemplars": [
+        "gh:unknowcao/dsh-outlook",
+        "gh:elfmingh/dsh-prompt-manager",
+        "gh:buger-gif/cyber-im-avatar/tree/main/dsh-plugin"
+      ]
+    },
+    {
+      "key": "session",
+      "title": "Sessions & Messages",
+      "titleZh": "会话与消息",
+      "layer": "L7",
+      "secondary": [
+        "L6"
+      ],
+      "count": 855,
+      "npmCount": 435,
+      "exemplars": [
+        "gh:light-cheng/dsh-strata",
+        "gh:yeqingtang/dsh-session-flow",
+        "gh:frog755/dsh-client-auto-retry"
+      ]
+    },
+    {
+      "key": "memory",
+      "title": "Memory",
+      "titleZh": "记忆",
+      "layer": "L7",
+      "secondary": [
+        "L2"
+      ],
+      "count": 478,
+      "npmCount": 244,
+      "exemplars": [
+        "gh:perrylink/dsh-memento",
+        "gh:slow-stack/mneme/tree/main/dsh-mneme",
+        "gh:eternalnight996/memory-eternal"
+      ]
+    },
+    {
+      "key": "tools",
+      "title": "Tools & Capabilities",
+      "titleZh": "工具与能力",
+      "layer": "L3",
+      "secondary": [
+        "L2"
+      ],
+      "count": 1528,
+      "npmCount": 825,
+      "exemplars": [
+        "gh:project-hy/dsh-claude-delegate",
+        "gh:imzl-zl/dsh-toolbox-ui",
+        "gh:2026heshao/dsh-armory"
+      ]
+    },
+    {
+      "key": "wsl",
+      "title": "WSL & Windows Interop",
+      "titleZh": "WSL 与 Windows 互操作",
+      "layer": "L3",
+      "secondary": [
+        "L1"
+      ],
+      "count": 88,
+      "npmCount": 12,
+      "exemplars": [
+        "gh:stallenlu/dsh-wsl-suite",
+        "gh:wang1462604987/dsh-wsl-sidebar",
+        "gh:xiny11451/dsh-wsl"
+      ]
+    },
+    {
+      "key": "browser",
+      "title": "Browser & Web",
+      "titleZh": "浏览器与网页",
+      "layer": "L3",
+      "secondary": [
+        "L8"
+      ],
+      "count": 219,
+      "npmCount": 134,
+      "exemplars": [
+        "gh:lyp88997/dsh-browser-service",
+        "gh:orderg-x/dsh-chrome-bridge/tree/main/plugin",
+        "gh:drscrewdriver/dsh-union-search"
+      ]
+    },
+    {
+      "key": "vision",
+      "title": "Vision & Multimodal",
+      "titleZh": "视觉与多模态",
+      "layer": "L3",
+      "secondary": [
+        "L6"
+      ],
+      "count": 200,
+      "npmCount": 100,
+      "exemplars": [
+        "gh:anionex/dsh-vision-toolkit",
+        "gh:cctv2333/dsh-vidlens",
+        "gh:q253595422/dsh-imagegen-video"
+      ]
+    },
+    {
+      "key": "voice",
+      "title": "Voice & Audio",
+      "titleZh": "语音与音频",
+      "layer": "L3",
+      "secondary": [
+        "L6"
+      ],
+      "count": 148,
+      "npmCount": 81,
+      "exemplars": [
+        "gh:kekydream/dsh-meeting-room",
+        "gh:alan2z/dsh-speak",
+        "gh:biliye/dsh-voice-call"
+      ]
+    },
+    {
+      "key": "docs",
+      "title": "Docs & Rendering",
+      "titleZh": "文档与渲染",
+      "layer": "L6",
+      "secondary": [
+        "L3"
+      ],
+      "count": 208,
+      "npmCount": 113,
+      "exemplars": [
+        "gh:polinnizhong/dsh-knit",
+        "gh:ggboya/dsh-paper-reader",
+        "gh:nonefire/drender/tree/main/plugins/hosts/dsh"
+      ]
+    },
+    {
+      "key": "skill",
+      "title": "Skills",
+      "titleZh": "技能包",
+      "layer": "L4",
+      "secondary": [
+        "L0"
+      ],
+      "count": 397,
+      "npmCount": 167,
+      "exemplars": [
+        "gh:xuzhecomeon/dsh-research-suite",
+        "gh:polinnizhong/dsh-skill-intelligence",
+        "gh:littleblacktong/dsh-plugin-superpowers"
+      ]
+    },
+    {
+      "key": "workflow",
+      "title": "Workflow & Automation",
+      "titleZh": "工作流与自动化",
+      "layer": "L5",
+      "secondary": [
+        "L3"
+      ],
+      "count": 667,
+      "npmCount": 368,
+      "exemplars": [
+        "gh:mrzturn/dsh-switchman",
+        "gh:eccvik/lmtagent",
+        "gh:leo-sail/dsh-plugin-agent-collaboration/tree/main/packages/bundle/agent-collaboration"
+      ]
+    },
+    {
+      "key": "git",
+      "title": "Git & Code Review",
+      "titleZh": "Git 与代码评审",
+      "layer": "L3",
+      "secondary": [
+        "L6"
+      ],
+      "count": 195,
+      "npmCount": 104,
+      "exemplars": [
+        "gh:binaryinject/dsh-review-checkout",
+        "gh:9087/dsh-diff-approval",
+        "gh:zjj1769404838/dsh-git-panel"
+      ]
+    },
+    {
+      "key": "notify",
+      "title": "Notifications & Integrations",
+      "titleZh": "通知与集成",
+      "layer": "L5",
+      "secondary": [
+        "L8"
+      ],
+      "count": 369,
+      "npmCount": 185,
+      "exemplars": [
+        "gh:leo-cjw/dsh-pharos",
+        "gh:ivanwu2015/dsh-connect/tree/main/packages/connect",
+        "gh:hughpython/dsh-tc-mail"
+      ]
+    },
+    {
+      "key": "dev",
+      "title": "Development & Runtime",
+      "titleZh": "开发与运行时",
+      "layer": "L1",
+      "secondary": [
+        "L0"
+      ],
+      "count": 632,
+      "npmCount": 337,
+      "exemplars": [
+        "gh:xiaoyuyu6420/dsh-backup",
+        "gh:stallenlu/dsh-steward",
+        "gh:ven314/dsh-conflict-doctor"
+      ]
+    },
+    {
+      "key": "security",
+      "title": "Security & Permissions",
+      "titleZh": "安全与权限",
+      "layer": "L8",
+      "secondary": [
+        "L3"
+      ],
+      "count": 286,
+      "npmCount": 155,
+      "exemplars": [
+        "gh:0qwq0/dsh-ui-auth",
+        "gh:asktheway/dsh-jev-interceptor",
+        "gh:liuwenji007/dsh-trust-check"
+      ]
+    },
+    {
+      "key": "remote",
+      "title": "Remote & Mobile",
+      "titleZh": "远程与移动端",
+      "layer": "L6",
+      "secondary": [
+        "L8"
+      ],
+      "count": 322,
+      "npmCount": 179,
+      "exemplars": [
+        "gh:drscrewdriver/dsh-im-union",
+        "gh:dingchenhui0618-arch/dsh-in-hand",
+        "gh:toddpan/dsh-webapi"
+      ]
+    },
+    {
+      "key": "market",
+      "title": "Plugin Markets & Managers",
+      "titleZh": "插件市场与管理",
+      "layer": "L9",
+      "secondary": [
+        "L0"
+      ],
+      "count": 145,
+      "npmCount": 75,
+      "exemplars": [
+        "gh:moldkey/dsh-deepseekbase",
+        "gh:hoyyang/dsh-mall",
+        "gh:tangyixiao/dsh-version-manager"
+      ]
+    },
+    {
+      "key": "fun",
+      "title": "Just for Fun",
+      "titleZh": "娱乐",
+      "layer": "L6",
+      "secondary": [
+        "L5"
+      ],
+      "count": 363,
+      "npmCount": 162,
+      "exemplars": [
+        "gh:xkk6663/dsh-live2d-mao/tree/main/packages/dsh-live2d-mao",
+        "gh:dingchenhui0618-arch/dsh-pet-ledger",
+        "gh:zyfgood/dsh-whale-girl"
+      ]
+    }
+  ],
+  "layers": [
+    {
+      "id": "L0",
+      "name": "Distribution & Composition",
+      "short": "profile, bundle, manifest, install",
+      "primary": 0,
+      "mentions": 2304
+    },
+    {
+      "id": "L1",
+      "name": "Host Runtime & Lifecycle",
+      "short": "Cordis plugin, inject, effects, HMR",
+      "primary": 632,
+      "mentions": 2797
+    },
+    {
+      "id": "L2",
+      "name": "Capability Seams & Services",
+      "short": "service definition/provider/consumer",
+      "primary": 562,
+      "mentions": 2650
+    },
+    {
+      "id": "L3",
+      "name": "Tools & Model-Facing Context",
+      "short": "tools, schemas, execution policy",
+      "primary": 2378,
+      "mentions": 6959
+    },
+    {
+      "id": "L4",
+      "name": "Skills & Agent Instructions",
+      "short": "skill providers, progressive disclosure",
+      "primary": 397,
+      "mentions": 891
+    },
+    {
+      "id": "L5",
+      "name": "Agent Composition & Orchestration",
+      "short": "presets, hooks, subagents, goals",
+      "primary": 1250,
+      "mentions": 3297
+    },
+    {
+      "id": "L6",
+      "name": "Client UI & Experience",
+      "short": "client plugin, slots, nodes, resources",
+      "primary": 4128,
+      "mentions": 7586
+    },
+    {
+      "id": "L7",
+      "name": "Data, Sessions & Persistence",
+      "short": "events, projections, storage, migration",
+      "primary": 1333,
+      "mentions": 4378
+    },
+    {
+      "id": "L8",
+      "name": "Security, Privacy & Supply Chain",
+      "short": "sandbox, approval, auth, provenance",
+      "primary": 286,
+      "mentions": 2426
+    },
+    {
+      "id": "L9",
+      "name": "Operations, Market & Ecosystem",
+      "short": "index, install, update, observability",
+      "primary": 145,
+      "mentions": 145
+    }
+  ],
+  "tags": [
+    {
+      "tag": "models",
+      "count": 4815
+    },
+    {
+      "tag": "client-ui",
+      "count": 4789
+    },
+    {
+      "tag": "sessions",
+      "count": 3893
+    },
+    {
+      "tag": "tools",
+      "count": 3387
+    },
+    {
+      "tag": "platform",
+      "count": 1912
+    },
+    {
+      "tag": "media",
+      "count": 1690
+    },
+    {
+      "tag": "security",
+      "count": 1292
+    },
+    {
+      "tag": "distribution",
+      "count": 1277
+    },
+    {
+      "tag": "service-seam",
+      "count": 1260
+    },
+    {
+      "tag": "persistence",
+      "count": 1103
+    },
+    {
+      "tag": "format",
+      "count": 1036
+    },
+    {
+      "tag": "orchestration",
+      "count": 975
+    },
+    {
+      "tag": "observability",
+      "count": 935
+    },
+    {
+      "tag": "skills",
+      "count": 884
+    },
+    {
+      "tag": "memory",
+      "count": 827
+    },
+    {
+      "tag": "browser",
+      "count": 800
+    },
+    {
+      "tag": "host-runtime",
+      "count": 760
+    },
+    {
+      "tag": "reliability",
+      "count": 446
+    }
+  ],
+  "keywords": [
+    {
+      "term": "deepseek",
+      "count": 2894
+    },
+    {
+      "term": "plugin",
+      "count": 1716
+    },
+    {
+      "term": "tool",
+      "count": 1572
+    },
+    {
+      "term": "memory",
+      "count": 934
+    },
+    {
+      "term": "token",
+      "count": 780
+    },
+    {
+      "term": "skill",
+      "count": 766
+    },
+    {
+      "term": "context",
+      "count": 736
+    },
+    {
+      "term": "image",
+      "count": 719
+    },
+    {
+      "term": "browser",
+      "count": 695
+    },
+    {
+      "term": "mcp",
+      "count": 680
+    },
+    {
+      "term": "markdown",
+      "count": 512
+    },
+    {
+      "term": "server",
+      "count": 499
+    },
+    {
+      "term": "git",
+      "count": 453
+    },
+    {
+      "term": "approval",
+      "count": 427
+    },
+    {
+      "term": "client",
+      "count": 338
+    },
+    {
+      "term": "preset",
+      "count": 330
+    },
+    {
+      "term": "theme",
+      "count": 323
+    },
+    {
+      "term": "cache",
+      "count": 299
+    },
+    {
+      "term": "subagent",
+      "count": 285
+    },
+    {
+      "term": "voice",
+      "count": 252
+    },
+    {
+      "term": "openai",
+      "count": 246
+    },
+    {
+      "term": "pdf",
+      "count": 230
+    },
+    {
+      "term": "bundle",
+      "count": 226
+    },
+    {
+      "term": "offline",
+      "count": 205
+    },
+    {
+      "term": "audit",
+      "count": 201
+    },
+    {
+      "term": "vision",
+      "count": 192
+    },
+    {
+      "term": "terminal",
+      "count": 185
+    },
+    {
+      "term": "workflow",
+      "count": 170
+    },
+    {
+      "term": "diff",
+      "count": 153
+    },
+    {
+      "term": "permission",
+      "count": 150
+    },
+    {
+      "term": "sqlite",
+      "count": 126
+    },
+    {
+      "term": "compact",
+      "count": 118
+    },
+    {
+      "term": "stream",
+      "count": 109
+    },
+    {
+      "term": "oauth",
+      "count": 105
+    },
+    {
+      "term": "sandbox",
+      "count": 95
+    },
+    {
+      "term": "retry",
+      "count": 93
+    },
+    {
+      "term": "schedule",
+      "count": 85
+    },
+    {
+      "term": "docx",
+      "count": 83
+    },
+    {
+      "term": "websocket",
+      "count": 65
+    },
+    {
+      "term": "local-first",
+      "count": 62
+    },
+    {
+      "term": "ollama",
+      "count": 57
+    },
+    {
+      "term": "secret",
+      "count": 53
+    },
+    {
+      "term": "sse",
+      "count": 51
+    },
+    {
+      "term": "timeout",
+      "count": 46
+    },
+    {
+      "term": "telegram",
+      "count": 45
+    },
+    {
+      "term": "anthropic",
+      "count": 44
+    },
+    {
+      "term": "migration",
+      "count": 42
+    },
+    {
+      "term": "whisper",
+      "count": 41
+    },
+    {
+      "term": "webhook",
+      "count": 40
+    },
+    {
+      "term": "hook",
+      "count": 38
+    },
+    {
+      "term": "cron",
+      "count": 32
+    },
+    {
+      "term": "notify",
+      "count": 30
+    },
+    {
+      "term": "embedding",
+      "count": 26
+    },
+    {
+      "term": "slack",
+      "count": 19
+    },
+    {
+      "term": "discord",
+      "count": 18
+    },
+    {
+      "term": "rag",
+      "count": 13
+    },
+    {
+      "term": "i18n",
+      "count": 3
+    },
+    {
+      "term": "encrypt",
+      "count": 3
+    }
+  ],
+  "topWords": [
+    {
+      "term": "deepseek",
+      "count": 2797
+    },
+    {
+      "term": "session",
+      "count": 2788
+    },
+    {
+      "term": "harness",
+      "count": 2539
+    },
+    {
+      "term": "model",
+      "count": 2523
+    },
+    {
+      "term": "web",
+      "count": 1978
+    },
+    {
+      "term": "agent",
+      "count": 1724
+    },
+    {
+      "term": "local",
+      "count": 1622
+    },
+    {
+      "term": "tools",
+      "count": 1574
+    },
+    {
+      "term": "settings",
+      "count": 1452
+    },
+    {
+      "term": "tool",
+      "count": 1418
+    },
+    {
+      "term": "sidebar",
+      "count": 1405
+    },
+    {
+      "term": "panel",
+      "count": 1374
+    },
+    {
+      "term": "plus",
+      "count": 1272
+    },
+    {
+      "term": "every",
+      "count": 1195
+    },
+    {
+      "term": "through",
+      "count": 1082
+    },
+    {
+      "term": "search",
+      "count": 1074
+    },
+    {
+      "term": "page",
+      "count": 1068
+    },
+    {
+      "term": "workspace",
+      "count": 1051
+    },
+    {
+      "term": "own",
+      "count": 1032
+    },
+    {
+      "term": "when",
+      "count": 1027
+    },
+    {
+      "term": "windows",
+      "count": 1015
+    },
+    {
+      "term": "sessions",
+      "count": 1008
+    },
+    {
+      "term": "file",
+      "count": 992
+    },
+    {
+      "term": "conversation",
+      "count": 982
+    },
+    {
+      "term": "composer",
+      "count": 981
+    },
+    {
+      "term": "desktop",
+      "count": 966
+    },
+    {
+      "term": "memory",
+      "count": 910
+    },
+    {
+      "term": "api",
+      "count": 852
+    },
+    {
+      "term": "turn",
+      "count": 841
+    },
+    {
+      "term": "text",
+      "count": 838
+    },
+    {
+      "term": "chat",
+      "count": 794
+    },
+    {
+      "term": "code",
+      "count": 782
+    },
+    {
+      "term": "files",
+      "count": 770
+    },
+    {
+      "term": "skill",
+      "count": 736
+    },
+    {
+      "term": "live",
+      "count": 735
+    },
+    {
+      "term": "them",
+      "count": 706
+    },
+    {
+      "term": "host",
+      "count": 698
+    },
+    {
+      "term": "default",
+      "count": 693
+    },
+    {
+      "term": "over",
+      "count": 683
+    },
+    {
+      "term": "mcp",
+      "count": 682
+    },
+    {
+      "term": "list",
+      "count": 676
+    },
+    {
+      "term": "provider",
+      "count": 665
+    },
+    {
+      "term": "token",
+      "count": 662
+    },
+    {
+      "term": "read",
+      "count": 656
+    },
+    {
+      "term": "context",
+      "count": 644
+    },
+    {
+      "term": "without",
+      "count": 643
+    },
+    {
+      "term": "browser",
+      "count": 631
+    },
+    {
+      "term": "skills",
+      "count": 630
+    },
+    {
+      "term": "prompt",
+      "count": 629
+    },
+    {
+      "term": "native",
+      "count": 628
+    },
+    {
+      "term": "back",
+      "count": 627
+    },
+    {
+      "term": "image",
+      "count": 616
+    },
+    {
+      "term": "card",
+      "count": 614
+    },
+    {
+      "term": "window",
+      "count": 602
+    },
+    {
+      "term": "usage",
+      "count": 599
+    },
+    {
+      "term": "optional",
+      "count": 585
+    },
+    {
+      "term": "task",
+      "count": 583
+    },
+    {
+      "term": "models",
+      "count": 576
+    },
+    {
+      "term": "before",
+      "count": 573
+    },
+    {
+      "term": "key",
+      "count": 568
+    }
+  ],
+  "coverage": {
+    "indexPlugins": 5643,
+    "matchedToNpmIndex": 5635,
+    "indexOnly": 8,
+    "indexOnlySample": [
+      {
+        "id": "gh:minus77/dsh-prompt-polish",
+        "name": "@minus77/dsh-prompt-polish",
+        "title": "Minus77/dsh-prompt-polish",
+        "categoryKey": "ui"
+      },
+      {
+        "id": "gh:hhse/dsh-usage-peak",
+        "name": "dsh-usage-peak",
+        "title": "hhse/dsh-usage-peak",
+        "categoryKey": "usage"
+      },
+      {
+        "id": "gh:hualuo520-h/dsh-connect-scnet",
+        "name": "dsh-connect-scnet",
+        "title": "hualuo520-h/dsh-connect-scnet",
+        "categoryKey": "model"
+      },
+      {
+        "id": "gh:hualuo520-h/dsh-proteus-bridge",
+        "name": "dsh-proteus-bridge",
+        "title": "hualuo520-h/dsh-proteus-bridge",
+        "categoryKey": "tools"
+      },
+      {
+        "id": "gh:nanaaya98/dsh-scope-manager",
+        "name": "dsh-scope-manager",
+        "title": "nanaaya98/dsh-scope-manager",
+        "categoryKey": "ui"
+      },
+      {
+        "id": "gh:pokereva/dsh-no-enter-sand",
+        "name": "dsh-no-enter-sand",
+        "title": "pokereva/dsh-no-enter-sand",
+        "categoryKey": "ui"
+      },
+      {
+        "id": "gh:taoziliyouchong/dsh-evolve-preset",
+        "name": "dsh-evolve-preset",
+        "title": "taoziliyouchong/dsh-evolve-preset#dsh-evolve-preset",
+        "categoryKey": "workflow"
+      },
+      {
+        "id": "gh:winlin926/dsh-roam",
+        "name": "dsh-roam",
+        "title": "winlin926/dsh-roam",
+        "categoryKey": "remote"
+      }
+    ],
+    "readmeEntries": 11111,
+    "readmeSkipped": 0,
+    "duplicateIds": 0,
+    "duplicateIdSample": []
+  },
+  "caveats": [
+    "Awesome-list inclusion is not a security review or a quality ranking.",
+    "npm-indexed means the index carried a known npm version; GitHub-only entries have no verified install spec here.",
+    "Layer and tag assignments are keyword heuristics over the curated one-line description, not source inspection.",
+    "One-line descriptions are author/community claims; verify the repository and running host before installing or recommending."
+  ]
+}

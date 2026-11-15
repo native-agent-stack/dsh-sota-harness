@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-14T20:37:26.554Z",
+  "note": "Plugins present in the npm index but absent from the awesome-list README. Kept outside the 11,111 listed-entry count.",
+  "entries": [
+    {
+      "id": "gh:minus77/dsh-prompt-polish",
+      "title": "Minus77/dsh-prompt-polish",
+      "category": "UI Enhancements",
+      "categoryKey": "ui",
+      "repo": "https://github.com/Minus77/dsh-prompt-polish",
+      "description": "Polishes the composer draft: opening the panel optimizes once with the default template, replacing the draft shows a line-by-line diff first, and a 9-second…",
+      "npm": {
+        "name": "@minus77/dsh-prompt-polish",
+        "version": "0.8.1",
+        "publishedAt": "2026-11-11T07:10:54.000Z"
+      },
+      "install": "dsh plugin --profile web add @minus77/dsh-prompt-polish@0.8.1",
+      "layer": "L6",
+      "layers": [
+        "L3",
+        "L6"
+      ],
+      "tags": [
+        "client-ui"
+      ],
+      "source": "npm-index-only"
+    },
+    {
+      "id": "gh:hhse/dsh-usage-peak",
+      "title": "hhse/dsh-usage-peak",
+      "category": "Usage & Billing",
+      "categoryKey": "usage",
+      "repo": "https://github.com/hhse/dsh-usage-peak",
+      "description": "Peak/valley pricing and spend dashboard for DeepSeek Harness, with a sidebar pill showing today's spend and tokens plus a details page with hourly, 14-day and…",
+      "npm": {
+        "name": "dsh-usage-peak",
+        "version": "1.0.1",
+        "publishedAt": "2026-11-07T08:07:30.000Z"
+      },
+      "install": "dsh plugin --profile web add dsh-usage-peak@1.0.1",
+      "layer": "L6",
+      "layers": [
+        "L6",
+        "L7"
+      ],
+      "tags": [
+        "client-ui",
+        "models",
+        "observability"
+      ],
+      "source": "npm-index-only"
+    },
+    {
+      "id": "gh:hualuo520-h/dsh-connect-scnet",
+      "title": "hualuo520-h/dsh-connect-scnet",
+      "category": "Models & Providers",
+      "categoryKey": "model",
+      "repo": "https://github.com/hualuo520-h/dsh-connect-scnet",
+      "description": "Brings the models of the SCNet (超算互联网) Computing Service desktop client into DSH by reusing the API key that client already wrote, with a 30-model catalog and…",
+      "npm": {
+        "name": "dsh-connect-scnet",
+        "version": "0.1.1",
+        "publishedAt": "2026-10-23T02:41:57.000Z"
+      },
+      "install": "dsh plugin --profile web add dsh-connect-scnet@0.1.1",
+      "layer": "L2",
+      "layers": [
+        "L1",
+        "L2",
+        "L3",
+        "L8"
+      ],
+      "tags": [
+        "service-seam",
+        "tools",
+        "models",
+        "platform"
+      ],
+      "source": "npm-index-only"
+    },
+    {
+      "id": "gh:hualuo520-h/dsh-proteus-bridge",
+      "title": "hualuo520-h/dsh-proteus-bridge",
+      "category": "Tools & Capabilities",
+      "categoryKey": "tools",
+      "repo": "https://github.com/hualuo520-h/dsh-proteus-bridge",
+      "description": "Drives Proteus 8/9 interactive simulation from the agent through eleven proteus_* tools: connect, simulation start/stop/status, probe readings, a project save…",
+      "npm": {
+        "name": "dsh-proteus-bridge",
+        "version": "0.4.3",
+        "publishedAt": "2026-10-27T07:28:51.000Z"
+      },
+      "install": "dsh plugin --profile web add dsh-proteus-bridge@0.4.3",
+      "layer": "L3",
+      "layers": [
+        "L2",
+        "L3",
+        "L5"
+      ],
+      "tags": [
+        "tools"
+      ],
+      "source": "npm-index-only"
+    },
+    {
+      "id": "gh:nanaaya98/dsh-scope-manager",
+      "title": "nanaaya98/dsh-scope-manager",
+      "category": "UI Enhancements",
+      "categoryKey": "ui",
+      "repo": "https://github.com/nanaaya98/dsh-scope-manager",
+      "description": "Scope manager for DeepSeek Harness: binds presets, persona cards, tools, skills and MCP connections to global / workspace / session layers, with a sidebar.",
+      "npm": {
+        "name": "dsh-scope-manager",
+        "version": "0.1.47",
+        "publishedAt": "2026-11-03T14:09:50.000Z"
+      },
+      "install": "dsh plugin --profile web add dsh-scope-manager@0.1.47",
+      "layer": "L6",
+      "layers": [
+        "L3",
+        "L6",
+        "L7"
+      ],
+      "tags": [
+        "client-ui",
+        "tools",
+        "skills",
+        "sessions",
+        "models"
+      ],
+      "source": "npm-index-only"
+    },
+    {
+      "id": "gh:pokereva/dsh-no-enter-sand",
+      "title": "pokereva/dsh-no-enter-sand",
+      "category": "UI Enhancements",
+      "categoryKey": "ui",
+      "repo": "https://github.com/pokereva/dsh-no-enter-sand",
+      "description": "Takes Enter away from sending in the DSH composer: Enter inserts a line break, every Ctrl/Cmd/Alt+Enter variant is swallowed, and messages leave only from the…",
+      "npm": {
+        "name": "dsh-no-enter-sand",
+        "version": "1.0.1",
+        "publishedAt": "2026-11-13T01:03:59.000Z"
+      },
+      "install": "dsh plugin --profile web add dsh-no-enter-sand@1.0.1",
+      "layer": "L6",
+      "layers": [
+        "L3",
+        "L6"
+      ],
+      "tags": [
+        "client-ui"
+      ],
+      "source": "npm-index-only"
+    },
+    {
+      "id": "gh:taoziliyouchong/dsh-evolve-preset",
+      "title": "taoziliyouchong/dsh-evolve-preset#dsh-evolve-preset",
+      "category": "Workflow & Automation",
+      "categoryKey": "workflow",
+      "repo": "https://github.com/taoziliyouchong/dsh-evolve-preset",
+      "description": "An agent preset that adds a working mode to DeepSeek Harness: the mode text has the model analyze requirements and plan before acting, open a gate document,…",
+      "npm": {
+        "name": "dsh-evolve-preset",
+        "version": "0.2.1",
+        "publishedAt": "2026-11-12T16:02:26.000Z"
+      },
+      "install": "dsh plugin --profile web add dsh-evolve-preset@0.2.1",
+      "layer": "L5",
+      "layers": [
+        "L3",
+        "L5"
+      ],
+      "tags": [
+        "orchestration",
+        "models"
+      ],
+      "source": "npm-index-only"
+    },
+    {
+      "id": "gh:winlin926/dsh-roam",
+      "title": "winlin926/dsh-roam",
+      "category": "Remote & Mobile",
+      "categoryKey": "remote",
+      "repo": "https://github.com/winlin926/dsh-roam",
+      "description": "Remote access to running DeepSeek Harness sessions from a phone browser: scan a one-time QR code to continue conversations, answer approvals and start new…",
+      "npm": {
+        "name": "dsh-roam",
+        "version": "1.2.0",
+        "publishedAt": "2026-10-24T12:25:19.000Z"
+      },
+      "install": "dsh plugin --profile web add dsh-roam@1.2.0",
+      "layer": "L6",
+      "layers": [
+        "L6",
+        "L8"
+      ],
+      "tags": [
+        "models",
+        "browser",
+        "platform"
+      ],
+      "source": "npm-index-only"
+    }
+  ]
+}
