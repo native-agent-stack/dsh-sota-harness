@@ -1,0 +1,7 @@
+{
+  "id": "l5-orchestration",
+  "layer": "L5",
+  "title": "Bounded orchestration preset",
+  "anchor": "dsh-proactive",
+  "fixture": "harness/fixtures/l5-orchestration"
+}

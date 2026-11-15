@@ -1,0 +1,7 @@
+{
+  "channel": "fixture-market",
+  "snapshot": "pinned",
+  "rollback": "previous snapshot",
+  "consent": "explicit",
+  "retire": "remove the listing"
+}

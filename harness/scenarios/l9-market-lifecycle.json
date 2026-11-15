@@ -1,0 +1,7 @@
+{
+  "id": "l9-market-lifecycle",
+  "layer": "L9",
+  "title": "Market snapshot and retirement",
+  "anchor": "moldkey/dsh-deepseekbase",
+  "fixture": "harness/fixtures/l9-market"
+}

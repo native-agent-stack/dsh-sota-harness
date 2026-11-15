@@ -4,9 +4,14 @@
   "requireConsent": true,
   "allowlist": [
     "0QwQ0/dsh-ui-auth",
+    "ArcaneOrion/dsh-model-channel-manager",
+    "OrderG-X/dsh-design-studio",
     "PerryLink/dsh-memento",
+    "dsh-proactive",
     "light-cheng/dsh-strata",
+    "moldkey/dsh-deepseekbase",
     "project-hy/dsh-claude-delegate",
+    "tangyixiao/dsh-version-manager",
     "xuzhecomeon/dsh-research-suite"
   ]
 }

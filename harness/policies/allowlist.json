@@ -1,11 +1,25 @@
 {
   "version": 1,
-  "note": "Five layer probes, not a production install list.",
+  "note": "Ten layer probes, not a production install list.",
   "allowlist": [
+    {
+      "id": "l0-distribution",
+      "layer": "L0",
+      "anchor": "tangyixiao/dsh-version-manager",
+      "evidence": "E1",
+      "reason": "Pinned SOTA anchor for this layer probe."
+    },
     {
       "id": "l1-lifecycle",
       "layer": "L1",
       "anchor": "PerryLink/dsh-memento",
+      "evidence": "E1",
+      "reason": "Pinned SOTA anchor for this layer probe."
+    },
+    {
+      "id": "l2-provider-seam",
+      "layer": "L2",
+      "anchor": "ArcaneOrion/dsh-model-channel-manager",
       "evidence": "E1",
       "reason": "Pinned SOTA anchor for this layer probe."
     },
@@ -24,6 +38,20 @@
       "reason": "Pinned SOTA anchor for this layer probe."
     },
     {
+      "id": "l5-orchestration",
+      "layer": "L5",
+      "anchor": "dsh-proactive",
+      "evidence": "E1",
+      "reason": "Pinned SOTA anchor for this layer probe."
+    },
+    {
+      "id": "l6-client-surface",
+      "layer": "L6",
+      "anchor": "OrderG-X/dsh-design-studio",
+      "evidence": "E1",
+      "reason": "Pinned SOTA anchor for this layer probe."
+    },
+    {
       "id": "l7-session-provenance",
       "layer": "L7",
       "anchor": "light-cheng/dsh-strata",
@@ -34,6 +62,13 @@
       "id": "l8-install-policy",
       "layer": "L8",
       "anchor": "0QwQ0/dsh-ui-auth",
+      "evidence": "E1",
+      "reason": "Pinned SOTA anchor for this layer probe."
+    },
+    {
+      "id": "l9-market-lifecycle",
+      "layer": "L9",
+      "anchor": "moldkey/dsh-deepseekbase",
       "evidence": "E1",
       "reason": "Pinned SOTA anchor for this layer probe."
     }

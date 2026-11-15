@@ -1,0 +1,16 @@
+{
+  "plugin": "fixture-ui",
+  "slots": [
+    "composer"
+  ],
+  "nodes": [
+    "status"
+  ],
+  "durable": "settings",
+  "live": "status",
+  "a11y": "labels",
+  "tokens": [
+    "color",
+    "space"
+  ]
+}

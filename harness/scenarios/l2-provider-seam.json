@@ -1,0 +1,7 @@
+{
+  "id": "l2-provider-seam",
+  "layer": "L2",
+  "title": "Definition/provider/consumer seam",
+  "anchor": "ArcaneOrion/dsh-model-channel-manager",
+  "fixture": "harness/fixtures/l2-seam"
+}

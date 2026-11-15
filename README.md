@@ -1,7 +1,7 @@
 # DSH SOTA Practice Harness
 
 A runnable practice repo for the DSH plugin ecosystem. It is deliberately small:
-five layer probes, not a mount of all 11,111 catalog entries.
+ten layer probes (L0–L9), not a mount of all 11,111 catalog entries.
 
 ## What this proves
 
@@ -28,7 +28,7 @@ node harness/run.mjs
 node .dsh/skills/dsh-plugin-sota/scripts/session-brief.mjs
 ~~~
 
-The first command runs the five probes; the second confirms the vendored skill,
+The first command runs the ten probes; the second confirms the vendored skill,
 catalog, docs, renderer, and final HTML are ready.
 
 ## Sync from the catalog repo
@@ -52,7 +52,7 @@ Treat the catalog repo as the source of truth for those cross-repo links.
 ~~~text
 .dsh/skills/dsh-plugin-sota/   vendored skill snapshot
 docs/plugin-landscape/          copied docs and final HTML
-harness/scenarios/              five probe definitions
+harness/scenarios/              ten probe definitions
 harness/fixtures/               one fixture per layer probe
 harness/policies/               allowlist and evidence bar
 harness/run.mjs                 offline probe runner
@@ -67,11 +67,16 @@ docs/adr/                       harness boundary decisions
 
 | Layer | Anchor | Fixture |
 |---|---|---|
+| L0 | tangyixiao/dsh-version-manager | packaging and reversibility |
 | L1 | PerryLink/dsh-memento | lifecycle fixture |
+| L2 | ArcaneOrion/dsh-model-channel-manager | provider/consumer seam |
 | L3 | project-hy/dsh-claude-delegate | typed tool schema |
 | L4 | xuzhecomeon/dsh-research-suite | skill contract |
+| L5 | dsh-proactive | bounded orchestration preset |
+| L6 | OrderG-X/dsh-design-studio | slots/nodes/client state |
 | L7 | light-cheng/dsh-strata | session event provenance |
 | L8 | 0QwQ0/dsh-ui-auth | install policy |
+| L9 | moldkey/dsh-deepseekbase | market snapshot and retirement |
 
 ## CI
 

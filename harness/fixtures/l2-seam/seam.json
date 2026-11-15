@@ -1,0 +1,7 @@
+{
+  "definition": "browser.provider",
+  "provider": "fixture-browser",
+  "consumer": "fixture-tool",
+  "scope": "session",
+  "owner": "fixture"
+}

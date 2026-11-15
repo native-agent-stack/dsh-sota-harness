@@ -18,7 +18,7 @@ and the SOTA workflow against a pinned snapshot.
 Create a separate repository, dsh-sota-harness, with:
 
 - a vendored snapshot of the dsh-plugin-sota skill and its docs;
-- five probes for L1, L3, L4, L7, and L8;
+- ten probes covering L0 through L9;
 - one fixture per probe;
 - a curated layer-anchor check plus catalog-layer membership;
 - an allowlist with an E1 evidence requirement;
@@ -33,8 +33,8 @@ the source of truth; the harness is the practice surface.
 - The harness is reproducible offline.
 - The vendored snapshot must be synced explicitly; a READY brief alone is not
   proof of sync.
-- Five probes do not prove the other 11,106 entries. They prove selected layer
-  contracts and the workflow.
+- Ten probes do not prove the other 11,101 entries. They prove all ten layer
+  contracts and the workflow surface.
 - A future version can replace the vendored copy with a submodule or a released
   package once the catalog repo has a remote.
 

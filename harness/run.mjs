@@ -22,7 +22,7 @@ function runNode(args) {
 
 const policy = JSON.parse(await fs.readFile(ALLOWLIST, 'utf8'))
 const files = (await fs.readdir(SCENARIOS)).filter((f) => f.endsWith('.json')).sort()
-if (files.length !== 5) fail('expected 5 scenarios, found ' + files.length)
+if (files.length !== 10) fail('expected 10 scenarios, found ' + files.length)
 
 const brief = runNode([path.join(SKILL, 'scripts', 'session-brief.mjs')])
 if (brief.status !== 0 || !brief.stdout.includes('READY')) {
@@ -80,6 +80,21 @@ for (const file of files) {
   } else if (scenario.layer === 'L8') {
     const install = JSON.parse(await fs.readFile(path.join(fixture, 'policy.json'), 'utf8'))
     if (install.allowUnknown !== false || install.requireConsent !== true) fail(label + ': install policy is not fail-closed')
+  } else if (scenario.layer === 'L0') {
+    const pkg = JSON.parse(await fs.readFile(path.join(fixture, 'packaging.json'), 'utf8'))
+    if (!pkg.name || !pkg.version || !pkg.engines?.dsh || !Array.isArray(pkg.files) || pkg.install?.reversible !== true) fail(label + ': package manifest is not versioned and reversible')
+  } else if (scenario.layer === 'L2') {
+    const seam = JSON.parse(await fs.readFile(path.join(fixture, 'seam.json'), 'utf8'))
+    if (!seam.definition || !seam.provider || !seam.consumer || !seam.scope) fail(label + ': seam fixture is not definition/provider/consumer')
+  } else if (scenario.layer === 'L5') {
+    const preset = JSON.parse(await fs.readFile(path.join(fixture, 'preset.json'), 'utf8'))
+    if (!preset.budget || !Array.isArray(preset.subagents) || !Array.isArray(preset.dispose) || !preset.rollback) fail(label + ': preset lacks budget/dispose/rollback')
+  } else if (scenario.layer === 'L6') {
+    const client = JSON.parse(await fs.readFile(path.join(fixture, 'client.json'), 'utf8'))
+    if (!Array.isArray(client.slots) || !Array.isArray(client.nodes) || !client.durable || !client.live || !client.a11y || !Array.isArray(client.tokens)) fail(label + ': client fixture lacks slots/nodes/durable/live/a11y/tokens')
+  } else if (scenario.layer === 'L9') {
+    const market = JSON.parse(await fs.readFile(path.join(fixture, 'market.json'), 'utf8'))
+    if (!market.snapshot || !market.rollback || market.consent !== 'explicit' || !market.retire) fail(label + ': market fixture lacks snapshot/rollback/consent/retire')
   } else {
     fail(label + ': unsupported layer')
   }
@@ -91,4 +106,4 @@ if (failures.length) {
   for (const failure of failures) console.error('FAIL ' + failure)
   process.exit(1)
 }
-console.log('Harness: ' + files.length + '/5 probes pass; no plugins installed')
+console.log('Harness: ' + files.length + '/10 probes pass; no plugins installed')

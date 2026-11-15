@@ -1,0 +1,17 @@
+{
+  "preset": "fixture-orchestrator",
+  "budget": {
+    "tokens": 10000,
+    "seconds": 120
+  },
+  "subagents": [
+    {
+      "role": "researcher",
+      "max": 1
+    }
+  ],
+  "dispose": [
+    "subagent"
+  ],
+  "rollback": "restore the previous preset"
+}

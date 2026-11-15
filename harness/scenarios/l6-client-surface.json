@@ -1,0 +1,7 @@
+{
+  "id": "l6-client-surface",
+  "layer": "L6",
+  "title": "Slots, nodes, and client state",
+  "anchor": "OrderG-X/dsh-design-studio",
+  "fixture": "harness/fixtures/l6-client"
+}

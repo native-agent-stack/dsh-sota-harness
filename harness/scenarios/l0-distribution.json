@@ -1,0 +1,7 @@
+{
+  "id": "l0-distribution",
+  "layer": "L0",
+  "title": "Versioned, reversible install",
+  "anchor": "tangyixiao/dsh-version-manager",
+  "fixture": "harness/fixtures/l0-distribution"
+}
