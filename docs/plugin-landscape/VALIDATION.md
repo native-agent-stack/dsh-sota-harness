@@ -34,7 +34,7 @@ Generated: 2026-11-14.
 | GitHub CI definition | .github/workflows/validate.yml | Node 22/Python 3.12; brief, offline catalog, anchors, docs, HTML, optional theme | Not executed on GitHub |
 | Scheduled refresh definition | .github/workflows/refresh-upstream.yml | Weekly/manual; REFRESH_TOKEN or github.token; fixed branch fetch + explicit lease; open-PR gate; merged/closed old PR ignored; never main | Not executed on GitHub |
 | Refresh demo | temp copy: refresh --offline, rebuild, full suite | 11,111 entries; READY; fetch calls 0; docs 23/23; themes pass | Complex workflow |
-| Workflow lint | actionlint -shellcheck= -pyflakes= .github/workflows/validate.yml .github/workflows/refresh-upstream.yml | Pass; trigger keys parsed as YAML 1.2 by actionlint | Workflow syntax |
+| Workflow lint | actionlint with shellcheck enabled -pyflakes= .github/workflows/validate.yml .github/workflows/refresh-upstream.yml | Pass; shellcheck 0.11.0 linted run blocks; actionlint parsed YAML 1.2 triggers | Workflow syntax |
 | Generated docs | build-landscape, build-coverage, build-report-summary, build-html, check | Landscape 829 lines; coverage and summary current | Regeneration path |
 | Final HTML | python3 scripts/build-html.py --check + Chrome headless render | 54,118 bytes, self-contained, current check passes, screenshot verified | Rendered manifest |
 | Light/print render | node scripts/validate-themes.mjs | Screen: tag 7.11:1, code 7.11:1; print: tag 7.82:1, code 17.43:1; sota-card light; SKIP without Chrome/WebSocket, --require fails | CSS theme surface |
