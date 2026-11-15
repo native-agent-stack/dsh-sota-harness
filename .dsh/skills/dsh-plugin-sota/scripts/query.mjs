@@ -82,19 +82,29 @@ function printEntries(entries, opts) {
   }
 }
 
-function score(entry, terms) {
+// Each word is scored on its own. `matched` counts the distinct words that hit,
+// so a row that matches nothing is never returned, and a row that covers more
+// of the query ranks above one that repeats a single word. Being on npm is a
+// tie-break in the sort, never a match.
+function score(entry, words) {
+  const title = entry.title.toLowerCase()
   const hay = (entry.title + ' ' + entry.description + ' ' + entry.category + ' ' + entry.tags.join(' ')).toLowerCase()
   let s = 0
-  for (const term of terms) {
-    const t = term.toLowerCase()
-    if (!t) continue
-    if (entry.title.toLowerCase() === t) s += 20
-    else if (entry.title.toLowerCase().includes(t)) s += 8
-    if (entry.tags.some((tag) => tag.includes(t))) s += 4
-    if (hay.includes(t)) s += 2
+  let matched = 0
+  for (const t of words) {
+    let hit = false
+    if (title === t) { s += 20; hit = true }
+    else if (title.includes(t)) { s += 8; hit = true }
+    if (entry.tags.some((tag) => tag.includes(t))) { s += 4; hit = true }
+    if (hay.includes(t)) { s += 2; hit = true }
+    if (hit) matched += 1
   }
-  if (entry.npm) s += 1
-  return s
+  return { s, matched }
+}
+
+// A quoted phrase arrives as one argument; search by its words.
+function searchWords(terms) {
+  return [...new Set(terms.flatMap((term) => term.toLowerCase().split(/\s+/)).filter(Boolean))]
 }
 
 function filterCatalog(catalog, opts) {
@@ -182,8 +192,18 @@ function cmdGet(catalog, id) {
 
 function cmdSearch(catalog, opts) {
   let rows = filterCatalog(catalog, opts)
-  if (opts.terms.length) {
-    rows = rows.map((e) => ({ e, s: score(e, opts.terms) })).filter((x) => x.s > 0).sort((a, b) => b.s - a.s || (b.e.npm ? 1 : 0) - (a.e.npm ? 1 : 0) || a.e.title.localeCompare(b.e.title)).map((x) => x.e)
+  const words = searchWords(opts.terms)
+  if (words.length) {
+    rows = rows
+      .map((e) => ({ e, ...score(e, words) }))
+      .filter((x) => x.matched > 0)
+      .sort((a, b) => b.matched - a.matched || b.s - a.s || (b.e.npm ? 1 : 0) - (a.e.npm ? 1 : 0) || a.e.title.localeCompare(b.e.title))
+      .map((x) => x.e)
+    if (!rows.length && !opts.json) {
+      console.log('No catalog entry matches: ' + words.join(' '))
+      console.log('A miss here is not proof that no plugin exists; try other words or `category <key>`.')
+      return
+    }
   } else {
     rows = rows.sort((a, b) => (b.npm ? 1 : 0) - (a.npm ? 1 : 0) || a.title.localeCompare(b.title))
   }

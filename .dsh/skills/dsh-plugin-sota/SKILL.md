@@ -71,6 +71,7 @@ success. Identify the primary layer from the layer table.
 ~~~sh
 node scripts/query.mjs stats
 node scripts/query.mjs search "outcome words" --limit 15
+# words are matched one by one; no match prints no rows
 node scripts/query.mjs category <key> --limit 20
 node scripts/query.mjs exemplars --category <key>
 ~~~
@@ -202,6 +203,7 @@ landscape.
 - **scripts/test-catalog-offline.mjs** — prove --check makes no network calls.
 - **scripts/pr-body.mjs** — build the scheduled refresh pull-request summary.
 - **scripts/query.mjs** — query and inspect the catalog.
+- **scripts/test-query.mjs** — prove search returns only rows that match the query.
 
 ## Validation
 
@@ -211,6 +213,7 @@ Before claiming the catalog or landscape is current:
 node scripts/session-brief.mjs
 node scripts/test-brief.mjs
 node scripts/test-catalog-offline.mjs
+node scripts/test-query.mjs
 node scripts/refresh-catalog.mjs --check
 node scripts/validate-anchors.mjs
 node scripts/test-anchors.mjs

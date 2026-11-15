@@ -38,6 +38,9 @@ jobs:
       - name: Offline catalog guard
         run: node .dsh/skills/dsh-plugin-sota/scripts/test-catalog-offline.mjs
 
+      - name: Catalog search returns matches only
+        run: node .dsh/skills/dsh-plugin-sota/scripts/test-query.mjs
+
       - name: Anchors
         run: node .dsh/skills/dsh-plugin-sota/scripts/validate-anchors.mjs
 
