@@ -1,0 +1,27 @@
+{
+  "presetVersion": "2.2.0",
+  "name": "sota-converged-mcp-triad",
+  "description": "Portable Cross-Peer MCP & Pre-Wall Trading Firewall Preset for DeepSeek Harness (dsh), symmetric with AGY and Claude Code/Codex.",
+  "firewall": {
+    "studyWallDate": "2026-10-15",
+    "maxProtectiveStopPct": 2.0,
+    "liveTrading": "HARD_REFUSED",
+    "forbiddenPorts": [4001, 7496],
+    "forbiddenHosts": ["api.alpaca.markets"]
+  },
+  "skillsMount": "~/.agents/skills",
+  "mcpServers": {
+    "sota-peer-bus": {
+      "command": "python3",
+      "args": ["-B", "~/.agents/bus/peer_bus_mcp.py"]
+    },
+    "agy-sota-core": {
+      "command": "python3",
+      "args": ["-B", "~/.gemini/config/plugins/agy-sota-core/mcp/sota_core_mcp.py"]
+    },
+    "sota-mover-ranker": {
+      "command": "python3",
+      "args": ["-B", "~/Documents/sota-mover-ranker/mcp_server.py"]
+    }
+  }
+}
