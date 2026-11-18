@@ -1,13 +1,30 @@
 {
-  "presetVersion": "2.2.0",
+  "presetVersion": "2.4.0",
   "name": "sota-converged-mcp-triad",
-  "description": "Portable Cross-Peer MCP & Pre-Wall Trading Firewall Preset for DeepSeek Harness (dsh), symmetric with AGY and Claude Code/Codex.",
+  "description": "Portable Cross-Peer MCP, 7-Feed sota-research-feeds.v2 PIT & Pre-Wall Trading Firewall Preset for DeepSeek Harness (dsh), symmetric with AGY, Claude Code/Codex, and Dual-Workstation Orca (Mac M5 Max <-> Noesis).",
   "firewall": {
     "studyWallDate": "2026-10-15",
     "maxProtectiveStopPct": 2.0,
     "liveTrading": "HARD_REFUSED",
     "forbiddenPorts": [4001, 7496],
     "forbiddenHosts": ["api.alpaca.markets"]
+  },
+  "researchConvergence": {
+    "schema": "sota-research-feeds.v2",
+    "provenanceRule": "ADR-0004",
+    "otherReposAuthority": "philosophy-only",
+    "canonicalFeeds": 7,
+    "strategyArchetypes": [
+      "PRE_TRAVEL_EARLY_IGNITION",
+      "FIRST_HAND_SEC_EPISODIC_PIVOT",
+      "MEGA_CAP_NEAR_LOSSLESS_ORB",
+      "CLIMAX_VWAP_MEAN_REVERSION"
+    ],
+    "moverRankerMcpTools": 16,
+    "dualWorkstationHosts": [
+      "portable_mac_m5_max",
+      "stationary_noesis_win32_wsl"
+    ]
   },
   "skillsMount": "~/.agents/skills",
   "mcpServers": {

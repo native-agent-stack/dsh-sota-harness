@@ -12,6 +12,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const SKILL = path.join(ROOT, '.dsh', 'skills', 'dsh-plugin-sota')
 const SCENARIOS = path.join(ROOT, 'harness', 'scenarios')
 const ALLOWLIST = path.join(ROOT, 'harness', 'policies', 'allowlist.json')
+const CONVERGED_PRESET = path.join(ROOT, 'presets', 'sota-converged-mcp.json')
 const LAYER_ANCHORS = path.join(SKILL, 'data', 'layer-anchors.json')
 const failures = []
 
@@ -21,6 +22,23 @@ function runNode(args) {
 }
 
 const policy = JSON.parse(await fs.readFile(ALLOWLIST, 'utf8'))
+const convergedPreset = JSON.parse(await fs.readFile(CONVERGED_PRESET, 'utf8'))
+const rc = convergedPreset.researchConvergence || {}
+if (
+  convergedPreset.presetVersion !== '2.4.0' ||
+  rc.schema !== 'sota-research-feeds.v2' ||
+  rc.provenanceRule !== 'ADR-0004' ||
+  rc.otherReposAuthority !== 'philosophy-only' ||
+  rc.canonicalFeeds !== 7 ||
+  !Array.isArray(rc.strategyArchetypes) ||
+  rc.strategyArchetypes.length !== 4 ||
+  rc.moverRankerMcpTools !== 16 ||
+  JSON.stringify(rc.dualWorkstationHosts) !== JSON.stringify(['portable_mac_m5_max', 'stationary_noesis_win32_wsl'])
+) {
+  fail('sota-converged-mcp.json preset v2.4.0 researchConvergence contract invalid')
+} else {
+  console.log('PASS preset v2.4.0 researchConvergence (sota-research-feeds.v2, 7 feeds, 4 archetypes, 16 MCP tools)')
+}
 const files = (await fs.readdir(SCENARIOS)).filter((f) => f.endsWith('.json')).sort()
 if (files.length !== 10) fail('expected 10 scenarios, found ' + files.length)
 
