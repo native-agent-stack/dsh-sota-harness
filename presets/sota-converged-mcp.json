@@ -26,6 +26,14 @@
       "stationary_noesis_win32_wsl"
     ]
   },
+  "ccLeadHub": {
+    "hubCli": "sota-cc-hub",
+    "workflow": "cc_lead_multi_runtime_workers_workflow.py",
+    "channel": "5_dsh_prewall_omo_kimi_hcom_and_sota_bus",
+    "dshDefaultModel": "deepseek-v4-pro",
+    "oneModelPerConversation": true,
+    "crossOs15of15BinaryParity": true
+  },
   "skillsMount": "~/.agents/skills",
   "mcpServers": {
     "sota-peer-bus": {
