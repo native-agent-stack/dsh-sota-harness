@@ -1,7 +1,7 @@
 {
-  "presetVersion": "2.4.0",
+  "presetVersion": "2.5.0",
   "name": "sota-converged-mcp-triad",
-  "description": "Portable Cross-Peer MCP, 7-Feed sota-research-feeds.v2 PIT & Pre-Wall Trading Firewall Preset for DeepSeek Harness (dsh), symmetric with AGY, Claude Code/Codex, and Dual-Workstation Orca (Mac M5 Max <-> Noesis).",
+  "description": "Portable Cross-Peer MCP, 9-Feed sota-ranking-datafeeds.v3.8 + 7-Feed sota-research-feeds.v2 PIT, Dual-Machine Orca Lanes & v3.8.0 Two-Track Compounding Versioning Preset for DeepSeek Harness (dsh), symmetric with AGY, Claude Code/Codex, and Stationary Noesis.",
   "firewall": {
     "studyWallDate": "2026-10-15",
     "maxProtectiveStopPct": 2.0,
@@ -25,6 +25,14 @@
       "portable_mac_m5_max",
       "stationary_noesis_win32_wsl"
     ]
+  },
+  "compoundingVersioning": {
+    "ecosystemVersion": "3.8.0",
+    "rankingDataFeedsSchema": "sota-ranking-datafeeds.v3.8",
+    "canonicalRankingFeeds": 9,
+    "moverRankerMcpTools": 17,
+    "hlzTrialsFloor": 90,
+    "twoTrackPromotionRule": true
   },
   "ccLeadHub": {
     "hubCli": "sota-cc-hub",

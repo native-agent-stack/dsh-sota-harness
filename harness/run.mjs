@@ -24,8 +24,9 @@ function runNode(args) {
 const policy = JSON.parse(await fs.readFile(ALLOWLIST, 'utf8'))
 const convergedPreset = JSON.parse(await fs.readFile(CONVERGED_PRESET, 'utf8'))
 const rc = convergedPreset.researchConvergence || {}
+const cv = convergedPreset.compoundingVersioning || {}
 if (
-  convergedPreset.presetVersion !== '2.4.0' ||
+  convergedPreset.presetVersion !== '2.5.0' ||
   rc.schema !== 'sota-research-feeds.v2' ||
   rc.provenanceRule !== 'ADR-0004' ||
   rc.otherReposAuthority !== 'philosophy-only' ||
@@ -33,11 +34,17 @@ if (
   !Array.isArray(rc.strategyArchetypes) ||
   rc.strategyArchetypes.length !== 4 ||
   rc.moverRankerMcpTools !== 16 ||
-  JSON.stringify(rc.dualWorkstationHosts) !== JSON.stringify(['portable_mac_m5_max', 'stationary_noesis_win32_wsl'])
+  JSON.stringify(rc.dualWorkstationHosts) !== JSON.stringify(['portable_mac_m5_max', 'stationary_noesis_win32_wsl']) ||
+  cv.ecosystemVersion !== '3.8.0' ||
+  cv.rankingDataFeedsSchema !== 'sota-ranking-datafeeds.v3.8' ||
+  cv.canonicalRankingFeeds !== 9 ||
+  cv.moverRankerMcpTools !== 17 ||
+  cv.hlzTrialsFloor !== 90 ||
+  cv.twoTrackPromotionRule !== true
 ) {
-  fail('sota-converged-mcp.json preset v2.4.0 researchConvergence contract invalid')
+  fail('sota-converged-mcp.json preset v2.5.0 researchConvergence + compoundingVersioning contract invalid')
 } else {
-  console.log('PASS preset v2.4.0 researchConvergence (sota-research-feeds.v2, 7 feeds, 4 archetypes, 16 MCP tools)')
+  console.log('PASS preset v2.5.0 researchConvergence + compoundingVersioning (v3.8.0, 9 DF feeds, 17 MCP tools, HLZ>=90)')
 }
 const files = (await fs.readdir(SCENARIOS)).filter((f) => f.endsWith('.json')).sort()
 if (files.length !== 10) fail('expected 10 scenarios, found ' + files.length)
