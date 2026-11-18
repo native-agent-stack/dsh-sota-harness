@@ -57,5 +57,16 @@
       "command": "python3",
       "args": ["-B", "~/Documents/sota-mover-ranker/mcp_server.py"]
     }
+  },
+  "v310ResearchConvergence": {
+    "symbolRankingSchema": "sota-symbol-ranking-datafeeds.v3.10",
+    "symbolRankingFeedsCount": 12,
+    "autoStrategyRoutesCount": 6,
+    "advancedStagesCount": 8,
+    "ownerStarredAudited": 413,
+    "beyondStarredSotaCount": 6,
+    "dshModel": "deepseek-flash",
+    "orcaLeadWorkflow": "orca-lead-e2e-research-convergence",
+    "sotaWorkflowRunCliParity": true
   }
 }
