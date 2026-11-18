@@ -29,6 +29,9 @@ jobs:
       - name: Harness probes
         run: node harness/run.mjs
 
+      - name: ADR catalog and zero-leak privacy gate
+        run: node harness/scripts/check-adr-catalog.mjs
+
       - name: Session brief
         run: node .dsh/skills/dsh-plugin-sota/scripts/session-brief.mjs
 
