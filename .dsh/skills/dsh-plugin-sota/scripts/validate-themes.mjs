@@ -96,6 +96,7 @@ async function main() {
     '--disable-gpu',
     '--hide-scrollbars',
     '--no-first-run',
+    ...(process.env.CI === 'true' ? ['--no-sandbox', '--disable-dev-shm-usage'] : []),
     '--remote-debugging-port=' + PORT,
     '--user-data-dir=' + PROFILE,
     'about:blank',
