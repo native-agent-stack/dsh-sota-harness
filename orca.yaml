@@ -1,0 +1,12 @@
+# Orca (https://github.com/stablyai/orca) dual-machine workspace recipe for dsh-sota-harness
+# Supports portable Apple M5 Max (macOS) and paired stationary Noesis (Windows + WSL2 Noesis-Carbon).
+scripts:
+  setup: |
+    if command -v node >/dev/null 2>&1; then node -v; fi
+setupAgentStartupPolicy: wait-for-setup
+defaultTabs:
+  - title: DSH Agent
+  - title: 10-Layer DSH Probes
+    command: node harness/run.mjs
+  - title: ADR Catalog Check
+    command: node harness/scripts/check-adr-catalog.mjs
