@@ -38,7 +38,8 @@
     "hubCli": "sota-cc-hub",
     "workflow": "cc_lead_multi_runtime_workers_workflow.py",
     "channel": "5_dsh_prewall_omo_kimi_hcom_and_sota_bus",
-    "dshDefaultModel": "deepseek-v4-pro",
+    "dshDefaultModel": "deepseek-v4.1-flash",
+    "dshOfficialApiSlug": "deepseek-flash",
     "oneModelPerConversation": true,
     "crossOs15of15BinaryParity": true
   },
