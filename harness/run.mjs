@@ -45,6 +45,8 @@ if (
   fail('sota-converged-mcp.json preset v2.5.0 researchConvergence + compoundingVersioning contract invalid')
 } else {
   console.log('PASS preset v2.5.0 researchConvergence + compoundingVersioning (v3.8.0, 9 DF feeds, 17 MCP tools, HLZ>=90)')
+  const rawPresetLower = JSON.stringify(convergedPreset).toLowerCase()
+  if (rawPresetLower.includes('kimi') || rawPresetLower.includes('deepseek-v4-pro')) fail('sota-converged-mcp.json contains forbidden stale/kimi model')
 }
 const files = (await fs.readdir(SCENARIOS)).filter((f) => f.endsWith('.json')).sort()
 if (files.length !== 10) fail('expected 10 scenarios, found ' + files.length)

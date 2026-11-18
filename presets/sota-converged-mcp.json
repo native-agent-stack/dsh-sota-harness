@@ -6,8 +6,13 @@
     "studyWallDate": "2026-10-15",
     "maxProtectiveStopPct": 2.0,
     "liveTrading": "HARD_REFUSED",
-    "forbiddenPorts": [4001, 7496],
-    "forbiddenHosts": ["api.alpaca.markets"]
+    "forbiddenPorts": [
+      4001,
+      7496
+    ],
+    "forbiddenHosts": [
+      "api.alpaca.markets"
+    ]
   },
   "researchConvergence": {
     "schema": "sota-research-feeds.v2",
@@ -37,7 +42,7 @@
   "ccLeadHub": {
     "hubCli": "sota-cc-hub",
     "workflow": "cc_lead_multi_runtime_workers_workflow.py",
-    "channel": "5_dsh_prewall_omo_kimi_hcom_and_sota_bus",
+    "channel": "5_dsh_prewall_omo_hephaestus_hcom_and_sota_bus",
     "dshDefaultModel": "deepseek-v4.1-flash",
     "dshOfficialApiSlug": "deepseek-flash",
     "oneModelPerConversation": true,
@@ -46,16 +51,31 @@
   "skillsMount": "~/.agents/skills",
   "mcpServers": {
     "sota-peer-bus": {
-      "command": "python3",
-      "args": ["-B", "~/.agents/bus/peer_bus_mcp.py"]
+      "command": "python",
+      "args": [
+        "-B",
+        "-u",
+        "~/.agents/bin/sota-mcp-launcher.py",
+        "sota-peer-bus"
+      ]
     },
     "agy-sota-core": {
-      "command": "python3",
-      "args": ["-B", "~/.gemini/config/plugins/agy-sota-core/mcp/sota_core_mcp.py"]
+      "command": "python",
+      "args": [
+        "-B",
+        "-u",
+        "~/.agents/bin/sota-mcp-launcher.py",
+        "agy-sota-core"
+      ]
     },
     "sota-mover-ranker": {
-      "command": "python3",
-      "args": ["-B", "~/Documents/sota-mover-ranker/mcp_server.py"]
+      "command": "python",
+      "args": [
+        "-B",
+        "-u",
+        "~/.agents/bin/sota-mcp-launcher.py",
+        "sota-mover-ranker"
+      ]
     }
   },
   "v310ResearchConvergence": {
