@@ -65,8 +65,8 @@ jobs:
       - name: Theme check (optional)
         run: |
           CHROME_BIN="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || true)"
-          if [ -n "$CHROME_BIN" ]; then
+          if [ -n "$CHROME_BIN" ] && timeout 10s "$CHROME_BIN" --headless=new --no-sandbox --disable-dev-shm-usage --dump-dom about:blank >/dev/null 2>&1; then
             DSH_CHROME="$CHROME_BIN" node .dsh/skills/dsh-plugin-sota/scripts/validate-themes.mjs --require
           else
-            echo "Chrome/Chromium not present; theme check skipped."
+            echo "Working headless Chrome/Chromium unavailable on runner; optional theme check skipped."
           fi

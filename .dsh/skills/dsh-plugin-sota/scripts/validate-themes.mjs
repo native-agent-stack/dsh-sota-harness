@@ -10,7 +10,7 @@
  */
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { spawn } from 'node:child_process'
+import { spawn, spawnSync } from 'node:child_process'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
@@ -47,7 +47,11 @@ const candidates = process.env.DSH_CHROME ? [process.env.DSH_CHROME] : [
 ].filter(Boolean)
 let CHROME = null
 for (const candidate of candidates) {
-  try { await fs.access(candidate); CHROME = candidate; break } catch {}
+  try {
+    await fs.access(candidate)
+    const ver = spawnSync(candidate, ['--version'], { timeout: 3000, stdio: 'ignore' })
+    if (ver.status === 0) { CHROME = candidate; break }
+  } catch {}
 }
 if (!CHROME) {
   skip('Chrome/Chromium not found; set DSH_CHROME or install Chrome, or omit this optional check')
