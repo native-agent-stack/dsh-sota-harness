@@ -1,8 +1,9 @@
 # Orca (https://github.com/stablyai/orca) dual-machine workspace recipe for dsh-sota-harness
 # Supports portable Apple M5 Max (macOS) and paired stationary Noesis (Windows + WSL2 Noesis-Carbon).
+# Cross-OS invariant: commands run identically in Win32 PowerShell, macOS zsh, and Linux bash.
 scripts:
   setup: |
-    if command -v node >/dev/null 2>&1; then node -v; fi
+    node -v
 setupAgentStartupPolicy: wait-for-setup
 defaultTabs:
   - title: DSH Agent
