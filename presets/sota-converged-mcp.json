@@ -76,6 +76,15 @@
         "~/.agents/bin/sota-mcp-launcher.py",
         "sota-mover-ranker"
       ]
+    },
+    "codebase-memory": {
+      "command": "python",
+      "args": [
+        "-B",
+        "-u",
+        "~/.agents/bin/sota-mcp-launcher.py",
+        "codebase-memory"
+      ]
     }
   },
   "v310ResearchConvergence": {

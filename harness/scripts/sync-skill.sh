@@ -4,7 +4,15 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd -P)"
-SOURCE="${DSH_CATALOG_REPO:-${1:-$ROOT/../dsh}}"
+if [ -n "${DSH_CATALOG_REPO:-}" ]; then
+  SOURCE="$DSH_CATALOG_REPO"
+elif [ -n "${1:-}" ]; then
+  SOURCE="$1"
+elif [ -d "$ROOT/../dsh-plugin-landscape" ]; then
+  SOURCE="$ROOT/../dsh-plugin-landscape"
+else
+  SOURCE="$ROOT/../dsh"
+fi
 
 if [ ! -d "$SOURCE" ]; then
   echo "Catalog source not found: $SOURCE" >&2
