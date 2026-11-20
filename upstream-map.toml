@@ -24,3 +24,4 @@
 [areas]
 "harness/*" = { upstream = "oh-my-openagent", how = "build-on", feature = "DeepSeek V4.1 Flash 10-layer harness runner and ADR/skill sync scripts", why = "execute open-weights pre-wall evaluation and cross-runtime skill parity" }
 ".dsh/skills/dsh-plugin-sota/scripts/*" = { upstream = "orca", how = "build-on", feature = "DSH plugin catalog builder, query CLI, and anchor validator", why = "keep DSH plugin registry deterministic and verified" }
+"scripts/merge_gate.py" = { upstream = "orca", how = "build-on", feature = "ADR-0023 fail-closed upstream-map, 18-pin shelf & ADR evidence merge gate", why = "block unmapped files, banned libs, or unverified ADRs before landing" }
