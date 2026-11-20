@@ -40,10 +40,12 @@ const tracked = execFileSync('git', ['-C', root, 'ls-files'], { encoding: 'utf8'
   .filter(Boolean);
 
 const leakPatterns = [
-  { name: 'Alpaca Paper Account ID', re: /\bPA[0-9A-Z]{10}\b/ },
+  { name: 'Alpaca Paper Account ID', re: /\bPA(?=[0-9A-Z]*[0-9])[0-9A-Z]{8,14}\b/ },
   { name: 'IBKR Paper Account ID', re: /\bDU[0-9]{7,9}\b/ },
   { name: 'Alpaca API Key', re: /\b(?:AK|PK)[0-9A-Z]{18,24}\b/ },
   { name: 'Concrete macOS Home Path', re: /\/Users\/(?!<)[A-Za-z0-9._-]+\// },
+  { name: 'Concrete Windows Home Path', re: /[A-Za-z]:[/\\]Users[/\\](?!<)[A-Za-z0-9._-]+/ },
+  { name: 'Concrete Linux Home Path', re: /(?<![A-Za-z0-9_*])\/home\/(?!<)[A-Za-z0-9._-]+\// },
 ];
 
 for (const rel of tracked) {

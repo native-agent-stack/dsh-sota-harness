@@ -1,19 +1,19 @@
-# Upstream SOTA Frameworks & 18-Pin Quantitative Shelf Lineage (`v3.9.0`)
+# Upstream SOTA Frameworks & 18-Pin Quantitative Shelf Lineage (`v3.10.10`)
 
-Repository: `https://github.com/native-agent-stack/dsh-sota-harness` · Plane & Lane: `H2 / H6_DEEPSEEK_10LAYER_HARNESS` · DataFeed Contract: `sota-ranking-datafeeds.v3.8` (`DF1..DF9`).
+Repository: `https://github.com/native-agent-stack/dsh-sota-harness` · Plane & Lane: `H2 / H6_DEEPSEEK_10LAYER_HARNESS` · DataFeed Contract: `sota-symbol-ranking-datafeeds.v3.10` (`DF1..DF12`, backward-compatible with `sota-ranking-datafeeds.v3.8` `DF1..DF9`).
 
-## 1. Multi-Model Runtime Workers & 8 SOTA Orchestration Frameworks (`17` Binaries, `11` Workers, `7` Vendors)
+## 1. Multi-Model Runtime Workers & 8 SOTA Orchestration Frameworks (`18` Binaries, `8` Active Runtimes, `7` Vendors)
 
-- **Cross-Machine Supervisor (`stablyai/orca` `v1.4.261`):** Symmetric `:6770` `Mac M5 Max (100.93.211.101) <-> Noesis (100.110.115.22)` E2EE mesh, `sota-orca-lane-hub.v2` `trading-lanes` / `harness-lanes` folder hubs, `worker-start --on 100.110.115.22`, and RTH broker contention shield (`singleActiveBrokerHostOnly = true`).
-- **Sovereign Lead Orchestrator (`Yeachan-Heo/oh-my-claudecode` `v5.8.4`):** `claude-fable-5-2` (`xhigh`, `OMC_RUNTIME_V2=1`, `oneModelPerConversation=true`) `omc ultragoal`, `omc team`, `omc ask`.
+- **Cross-Machine Supervisor (`stablyai/orca` `v1.4.264`):** Dual-machine `Mac M5 Max (100.93.211.101:6768) <-> Stationary Noesis (100.110.115.22:6770)` E2EE mesh, `sota-orca-lane-hub.v2` `trading-lanes` / `harness-lanes` folder hubs, `worker-start --on 100.110.115.22`, and RTH broker contention shield (`singleActiveBrokerHostOnly = true`).
+- **Sovereign Lead Orchestrator (`Yeachan-Heo/oh-my-claudecode` `v5.8.6` plugin / `v5.8.4` CLI):** `claude-fable-5-2` (`xhigh`, `OMC_RUNTIME_V2=1`, `oneModelPerConversation=true`) `omc ultragoal`, `omc team`, `omc ask`.
 - **Cross-Family Adversarial Critic (`Yeachan-Heo/oh-my-codex` `v0.22.10` + `max-sixty/worktrunk`):** `gpt-6.2-astra` `omx exec` / `omx mission` in isolated git worktrees.
 - **8-Slot Lifecycle & Peer Spine (`ComposioHQ/agent-orchestrator` + `aannoo/hcom` + `steveyegge/beads` + `omniroute`):** 8-slot cross-vendor `AO` convergence, SQLite WAL `peer_bus.db`, `hcom` PTY push & `bd` DAG tracking.
-- **Schema-Typed Python DAGs (`google-antigravity/antigravity-sdk-python` `v1.5.10`):** `16` `run_workflow` Python DAGs (`gemini-4-carbon-high` 1M context) + Native Swarm `workspace:share`.
-- **Non-GPT Polyglot Graph Runtime (`code-yeongyu/oh-my-openagent` `v5.1.75`):** `claude-sonnet-5-5` / `deepseek-v4.1-flash` `Hephaestus` (`forbids_gpt_on_hephaestus=true`).
-- **Role-Selected Thinking Workers (`can1357/oh-my-pi` `v18.22.0` + `block/goose` `v1.59.2`):** `@worker` explicit `--effort` workers & AAIF MCP autonomous recipes.
-- **Open-Weights Pre-Wall Evaluator (`native-agent-stack/dsh-sota-harness` `v0.2.2-rc.2`):** `deepseek-v4.1-flash` (`deepseek-flash` default in `@deepseek-ai/dsh-agent-default-model`) 10-layer offline probes & `<= 2026-10-15` pre-wall batch evaluator.
+- **Schema-Typed Python DAGs (`google-antigravity/antigravity-sdk-python` `v1.5.13`):** `21` canonical `REGISTRY.json` workflows + `10` local `run_workflow` Python DAGs (`gemini-4-neon-xhigh` / `gemini-4-carbon-high` 1M context) + Native Swarm `workspace:share`.
+- **Non-GPT Polyglot Graph Runtime (`code-yeongyu/oh-my-openagent` `v5.1.79`):** `claude-sonnet-5-5` / `deepseek-v4.1-flash` `Hephaestus` (`forbids_gpt_on_hephaestus=true`).
+- **Role-Selected Thinking Workers (`earendil-works/pi` `v1.5.2` + `can1357/oh-my-pi` `v18.22.0`):** `@worker` explicit `--effort` (`gpt-6.2-sol` `high`) workers with native `sota-safety-firewall.ts` `tool_call` extension (`grok`/`goose` retired).
+- **Open-Weights Pre-Wall Evaluator (`deepseek-ai/deepseek-harness` `v0.2.2-rc.2` + `native-agent-stack/dsh-sota-harness`):** `deepseek-v4.1-flash` (`deepseek-flash` default in `@deepseek-ai/dsh-agent-default-model`), `4`-server MCP parity (`mover-ranker`, `sota-peer-bus`, `agy-sota-core`, `codebase-memory`), isolated `@deepseek-ai/dsh-hooks-claude-code` `PreToolUse` firewall (`~/.dsh/sota-hooks.json` via fenced `~/.dsh/cordis.patch.yml`), 10-layer offline probes & `<= 2026-10-15` pre-wall batch evaluator.
 
-## 2. 18 Immutable `40`-Hex Quantitative & Execution Upstream Shelf Pins (`DF1..DF9`)
+## 2. 18 Immutable `40`-Hex Quantitative & Execution Upstream Shelf Pins (`DF1..DF12` / `DF1..DF9` Compat)
 
 - `alpacahq/alpaca-py` @ `c42add7c0a7026e2ead3ed64e76f4def2b99fda4` (`DF1` SIP, `DF2` BOATS / Dec-6 `23/5`)
 - `alpacahq/alpaca-mcp-server` @ `63cc4278d87b31f3ed4efcfaa55624095c6d7be8`
