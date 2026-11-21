@@ -11,3 +11,5 @@ defaultTabs:
     command: node harness/run.mjs
   - title: ADR Catalog Check
     command: node harness/scripts/check-adr-catalog.mjs
+  - title: Tier-0 Merge Gate
+    command: python scripts/merge_gate.py
